@@ -1,7 +1,8 @@
 import React, { useState, useEffect, use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../../../context/AuthProvider";
+
 import logo from "../../../assets/open-book.png"
+import { AuthContext } from "../../../context/AuthContext";
 
 
 
