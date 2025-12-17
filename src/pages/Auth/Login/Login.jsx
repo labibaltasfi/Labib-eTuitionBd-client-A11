@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import { ToastContainer } from "react-toastify";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const {
@@ -14,9 +15,6 @@ const Login = () => {
     console.log("Login data:", data);
   };
 
-  const handleGoogleSignIn = () => {
-    console.log("Google login clicked");
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-10">
@@ -73,7 +71,7 @@ const Login = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3 sm:py-4 rounded-xl bg-[#192489] text-white font-semibold hover:bg-[#141d6f] transition"
+            className="w-full cursor-pointer py-3 sm:py-4 rounded-xl bg-[#192489] text-white font-semibold hover:bg-[#141d6f] transition"
           >
             Login
           </button>
@@ -87,19 +85,7 @@ const Login = () => {
         </div>
 
         {/* Google Login */}
-        <button
-          onClick={handleGoogleSignIn}
-          className="w-full py-3 sm:py-4 rounded-xl bg-white text-gray-800 font-semibold
-            hover:bg-gray-100 flex items-center justify-center gap-3 transition
-            border-2 border-[#192489]"
-        >
-          <img
-            src="https://www.svgrepo.com/show/355037/google.svg"
-            alt="Google"
-            className="w-5 h-5 sm:w-6 sm:h-6"
-          />
-          Login with Google
-        </button>
+        <SocialLogin></SocialLogin>
 
         {/* Register link */}
         <p className="pt-4 sm:pt-6 text-center text-gray-600">

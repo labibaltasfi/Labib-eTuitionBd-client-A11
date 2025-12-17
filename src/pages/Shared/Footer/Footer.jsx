@@ -75,7 +75,7 @@ const Footer = () => {
                             <h3 className="text-white font-semibold mb-4">Contact us</h3>
                             <ul className="space-y-2">
                                 <li>
-                                    <Link to="/" className="hover:text-white transition">+095555455</Link>
+                                    <Link to="/" className="hover:text-white transition">+8809638398027</Link>
                                 </li>
                                 <li>
                                     <Link to="/allMovies" className="hover:text-white transition">labiballtasfi11@gmail.com</Link>
