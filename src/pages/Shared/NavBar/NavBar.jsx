@@ -50,7 +50,7 @@ const Navbar = () => {
       </li>
 
       <li
-        onClick={() => handleNavigation("/allMovies")}
+        onClick={() => handleNavigation("/About")}
         className={`my-2 px-3 py-1  font-semibold rounded-md cursor-pointer transition-colors duration-200 btn-secondary ${location.pathname === "/allMovies"
             ? "text-[#00A8E7] "
           : "text-white "
@@ -59,7 +59,7 @@ const Navbar = () => {
         About
       </li>
       <li
-        onClick={() => handleNavigation("/allMovies")}
+        onClick={() => handleNavigation("/Contact")}
         className={`my-2 px-3 py-1 font-semibold rounded-md cursor-pointer transition-colors duration-200 btn-secondary ${location.pathname === "/allMovies"
             ? "text-[#00A8E7] "
           : "text-white "
@@ -70,7 +70,7 @@ const Navbar = () => {
       {user && (
         <>
           <li
-            onClick={() => handleNavigation("/myCollection")}
+            onClick={() => handleNavigation("/PostTuitions")}
             className={`my-2 px-3 mr-3 py-1  font-semibold rounded-md cursor-pointer transition-colors duration-200 btn-secondary ${location.pathname === "/myCollection"
                 ? "text-[#00A8E7] "
           : "text-white "
