@@ -17,59 +17,55 @@ const Register = () => {
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
 
-    const handleRegistration = (data) => {
-        console.log('after register', data.photo[0]);
-        const profileImg = data.photo[0];
-        createUser(data.email, data.password)
-            .then(result => {
-                console.log(result.user);
-               
-                const formData = new FormData();
-                formData.append('image', profileImg);
+    const handleRegistration = async (data) => {
+        try {
+            console.log('after register', data.photo[0]);
+            const profileImg = data.photo[0];
 
-               
-                const image_API_URL = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.local.VITE_image_host_key}`
-                axios.post(image_API_URL, formData)
-                    .then(res => {
-                        const photoURL = res.data.data.url;
-                        console.log('after image upload', res.data.data.url);
+            // Create Firebase user
+            const result = await createUser(data.email, data.password);
+            console.log(result.user);
 
+            // Upload profile image
+            const formData = new FormData();
+            formData.append('image', profileImg);
 
-                        
-                        const userInfo = {
-                            email: data.email,
-                            displayName: data.name,
-                            role: data.role,
-                            mobile: data.mobile,
-                            photoURL: photoURL
-                        }
-                        axiosSecure.post('/users', userInfo)
-                            .then(res => {
-                                if (res.data.insertedId) {
-                                    console.log('user created in the database');
-                                }
-                            })
+            const image_API_URL = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_image_host_key}`;
+            const imgRes = await axios.post(image_API_URL, formData);
+            const photoURL = imgRes.data.data.url;
+            console.log('after image upload', photoURL);
 
-                       
-                        const userProfile = {
-                            displayName: data.name,
-                            photoURL: photoURL
-                        }
+            
+            const userInfo = {
+                email: data.email,
+                displayName: data.name,
+                role: data.role || 'student',
+                mobile: data.mobile || '',
+                photoURL
+            };
 
-                        updateUser(userProfile)
-                            .then(() => {
-                                console.log('user profile updated done.')
-                                navigate(location.state || '/');
-                            })
-                            .catch(error => console.log(error))
+            // Post to MongoDB
+            const res = await axiosSecure.post('/users', userInfo);
+            if (res.data.insertedId) {
+                console.log('user created in the database');
+            }
 
+            // Update Firebase profile
+            await updateUser({ displayName: data.name, photoURL });
+            console.log('user profile updated done.');
 
-                    })
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+            // Navigate once
+            navigate(location.state || '/');
+        } catch (error) {
+            console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Registration failed',
+                text: error.message
+            });
+        }
+    };
+
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 py-10">

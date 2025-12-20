@@ -1,7 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { FaUserShield } from 'react-icons/fa';
-import { FiShieldOff } from 'react-icons/fi';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { FaTrashCan } from 'react-icons/fa6';
@@ -154,9 +152,9 @@ const UsersManagement = () => {
                                             onChange={(e) => handleRoleChange(user, e.target.value)}
                                             className="border rounded-lg p-2 bg-white text-black cursor-pointer"
                                         >
-                                            <option value="student">Student</option>
-                                            <option value="tutor">Tutor</option>
-                                            <option value="admin">Admin</option>
+                                            <option value="student">student</option>
+                                            <option value="tutor">tutor</option>
+                                            <option value="admin">admin</option>
                                         </select>
                                    
                                 </div>
@@ -174,11 +172,14 @@ const UsersManagement = () => {
                             >
                                 Update
                             </button>
+                                     <button
+                                className="btn btn-primary ml-3"
+                                onClick={() => navigate(`user-details/${user._id}`)}
+                            >
+                                Details
+                            </button>
                             </th>
                         </tr>)}
-
-
-
                     </tbody>
                 </table>
             </div>
@@ -226,9 +227,9 @@ const UsersManagement = () => {
                                             onChange={(e) => handleRoleChange(user, e.target.value)}
                                             className="border rounded-lg p-2 bg-white text-black cursor-pointer"
                                         >
-                                            <option value="student">Student</option>
-                                            <option value="tutor">Tutor</option>
-                                            <option value="admin">Admin</option>
+                                            <option value="student">student</option>
+                                            <option value="tutor">tutor</option>
+                                            <option value="admin">admin</option>
                                         </select>
                                    
                                 </div>

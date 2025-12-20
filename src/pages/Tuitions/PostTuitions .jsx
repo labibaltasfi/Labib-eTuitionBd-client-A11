@@ -18,6 +18,7 @@ const PostTuitions = () => {
             selectedDays: []
         }
     });
+
     const watchedDays = useWatch({ control, name: 'selectedDays' });
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
@@ -50,13 +51,14 @@ const PostTuitions = () => {
 
     const handlePostTuitions = (data) => {
 
-const formattedDays = data.selectedDays.join(', ');
+        const formattedDays = data.selectedDays.join(', ');
 
-    
-    const finalData = {
-        ...data,
-        selectedDays: formattedDays 
-    };
+
+        const finalData = {
+            ...data,
+            selectedDays: formattedDays
+        };
+        console.log(finalData)
         axiosSecure.post('/tuitionlist', finalData)
             .then(res => {
                 console.log('after saving', res.data);

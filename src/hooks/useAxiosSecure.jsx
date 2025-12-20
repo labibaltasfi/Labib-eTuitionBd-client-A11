@@ -30,7 +30,7 @@ const useAxiosSecure = () => {
       async (error) => {
         const statusCode = error.response?.status;
 
-        if (statusCode === 401 || statusCode === 403) {
+        if (user && statusCode === 401 || statusCode === 403) {
           await logOut();
           navigate('/login');
         }
