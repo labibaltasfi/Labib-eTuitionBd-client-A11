@@ -1,34 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import useAxios from '../../hooks/useAxios';
+import React from 'react';
+
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router';
 
 
 const TuitionList = () => {
-    // const { tuitionId } = useParams();
-    const axiosInstance = useAxios();
-    const [tuition, setTuition] = useState([])
-    const [loading, setLoading] = useState(true);
+   
+    const axiosSecure = useAxiosSecure();
+   
 
-    // const {data: tuitionlist = []} = useQuery({
-    //     queryKey: ['tracking', tuitionId],
-    //     queryFn: async () =>{
-    //         const res  = await axiosInstance.get(`/trackings/${tuitionId}/logs`)
-    //         console.log(res.data)
-    //         return res.data;
-    //     }
-    // })
+   
 
-useEffect(() => {
-        axiosInstance
-            .get("/tuitionlist")
-            .then(res => {
-                setTuition(res.data);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error(err);
-                setLoading(false);
-            });
-    }, [axiosInstance, ]);
+const {
+  data: tuition = [],
+} = useQuery({
+  queryKey: ['tuitionlist', 'approved'],
+  queryFn: async () => {
+    const res = await axiosSecure.get('/tuitionlist/approved');
+    return res.data;
+  },
+});
+
 
 console.log(tuition)
 
@@ -47,9 +40,9 @@ console.log(tuition)
                                 <div className='flex text-xl'><h3 className='font-semibold pr-2'>District:</h3><p>{tuition.tuitionDistrict}</p></div>
                             </div>
                             <div>
-                                <button className="p-4 rounded-xl bg-white   font-medium hover:bg-blue-100 transition">
+                                <Link to={`/tuition-details/${tuition._id}`} className="p-4 rounded-xl bg-white   font-medium hover:bg-blue-100 transition">
                                     Details
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

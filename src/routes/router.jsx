@@ -10,6 +10,7 @@ import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement"
 import UpdateUser from "../pages/Dashboard/UsersManagement/UpdateUser";
 import UserDetails from "../pages/Dashboard/UsersManagement/UserDetails";
 import TuitionManagement from "../pages/Dashboard/TuitionManagement/TuitionManagement";
+import TuitionDetails from "../pages/Tuitions/TuitionDetails";
 
 
 
@@ -35,10 +36,10 @@ export const router = createBrowserRouter([
         path: 'tuitionlist',
         Component: tuitionList
       },
-      //  {
-      //   path: 'tuitionlist/:tuitionId',
-      //   Component: tuitionList
-      // },
+       {
+        path: "tuition-details/:id",
+        Component: TuitionDetails
+      },
     ]
   },
   {

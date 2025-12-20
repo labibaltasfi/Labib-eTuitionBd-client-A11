@@ -162,6 +162,17 @@ const PostTuitions = () => {
                         />
                     </div>
 
+                    {/* Student Name (Read Only) */}
+                    <div className="flex flex-col">
+                        <label className="mb-1 font-medium">Student Name</label>
+                        <input
+                            type="text"
+                            {...register('studentName')}
+                            defaultValue={user?.displayName}
+                            readOnly
+                            className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
+                        />
+                    </div>
                     {/* Student Email (Read Only) */}
                     <div className="flex flex-col">
                         <label className="mb-1 font-medium">Student Email</label>
