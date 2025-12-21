@@ -11,6 +11,8 @@ import UpdateUser from "../pages/Dashboard/UsersManagement/UpdateUser";
 import UserDetails from "../pages/Dashboard/UsersManagement/UserDetails";
 import TuitionManagement from "../pages/Dashboard/TuitionManagement/TuitionManagement";
 import TuitionDetails from "../pages/Tuitions/TuitionDetails";
+import AppliedTutors from "../pages/Dashboard/StudentDashboard/AppliedTutors";
+import Home from "../pages/Home/Home";
 
 
 
@@ -19,6 +21,10 @@ export const router = createBrowserRouter([
     path: "/",
     Component: RootLayout,
     children: [
+       {
+        index: true,
+        Component: Home
+      },
       {
         path: 'register',
         Component: Register
@@ -26,15 +32,6 @@ export const router = createBrowserRouter([
       {
         path: 'login',
         Component: Login
-      },
-      {
-        path: 'PostTuitions',
-        element: <PostTuitions></PostTuitions>,
-        loader: () => fetch('/location.json').then(res => res.json())
-      },
-      {
-        path: 'tuitionlist',
-        Component: tuitionList
       },
        {
         path: "tuition-details/:id",
@@ -73,6 +70,19 @@ export const router = createBrowserRouter([
       {
         path: 'tuition-management',
         element: <TuitionManagement></TuitionManagement>
+      },
+      {
+        path: 'PostTuitions',
+        element: <PostTuitions></PostTuitions>,
+        loader: () => fetch('/location.json').then(res => res.json())
+      },
+      {
+        path: 'tuitionlist',
+        Component: tuitionList
+      },
+      {
+        path: 'applied-tutors',
+        Component: AppliedTutors
       },
     ]
   }

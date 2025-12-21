@@ -29,10 +29,10 @@ console.log(tuition)
         <div className="min-h-screen  bg-gray-100 p-4 text-black">
             <div className='w-11/12 mx-auto'>
             <h1 className='text-center font-bold text-4xl py-10'>Tuition List</h1>
-                <div className='grid md:grid-cols-2  justify-items-center'>
+                <div className='grid md:grid-cols-2 gap-4  justify-items-center'>
                     {
                         tuition.map((tuition) => (
-                            <div key={tuition._id} className="w-full max-w-2xl h-35 rounded-2xl shadow-lg bg-[#AEDAE2] my-10">
+                            <div key={tuition._id} className="w-full max-w-2xl h-35 rounded-2xl shadow-lg bg-[#AEDAE2] my-2">
                         <div className="p-6 flex justify-between items-center">
                             <div>
                                 <div className='flex text-xl'><h3 className='font-semibold pr-2'>Class:</h3><p>{tuition.NameOfclass}</p></div>

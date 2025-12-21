@@ -1,9 +1,10 @@
 import React from 'react';
-import {  FaUsersCog } from 'react-icons/fa';
+import {  FaUserCog, FaUsersCog } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import logoImg from '../assets/open-book.png';
 import useRole from '../hooks/useRole';
-import { FaBookOpenReader } from 'react-icons/fa6';
+import { FaBookOpenReader, FaRegCreditCard, FaUserCheck } from 'react-icons/fa6';
+import { BsFillClipboardPlusFill } from 'react-icons/bs';
 
 const DashboardLayout = () => {
       const { role } = useRole();
@@ -56,6 +57,41 @@ const DashboardLayout = () => {
                                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Tuition Management" to="/dashboard/tuition-management">
                                         <FaBookOpenReader />
                                         <span className="is-drawer-close:hidden">Tuition Management</span>
+                                    </NavLink>
+                                </li>
+                            </>
+                        }
+                       {
+                            role === 'student' && <>
+
+                                <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Tuitions" to="/dashboard/tuitionlist">
+                                        <FaBookOpenReader />
+                                        <span className="is-drawer-close:hidden">My Tuitions</span>
+                                    </NavLink>
+                                </li>
+                                 <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Post New Tuition" to="/dashboard/PostTuitions">
+                                        <BsFillClipboardPlusFill />
+                                        <span className="is-drawer-close:hidden">Post New Tuition</span>
+                                    </NavLink>
+                                </li>
+                                 <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Applied Tutors" to={`/dashboard/applied-tutors`}>
+                                        <FaUserCheck />
+                                        <span className="is-drawer-close:hidden">Applied Tutors</span>
+                                    </NavLink>
+                                </li>
+                                 <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payments" to="/dashboard/Payments">
+                                        <FaRegCreditCard />
+                                        <span className="is-drawer-close:hidden">Payments</span>
+                                    </NavLink>
+                                </li>
+                                 <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile Settings" to="/dashboard/profile-settings">
+                                        <FaUserCog />
+                                        <span className="is-drawer-close:hidden">Profile Settings</span>
                                     </NavLink>
                                 </li>
                             </>

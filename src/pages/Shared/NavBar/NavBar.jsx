@@ -79,13 +79,13 @@ const Navbar = () => {
             Tuitions
           </li>
           <li
-            onClick={() => handleNavigation("/tuitionlist")}
+            onClick={() => handleNavigation("/dashboard")}
             className={`my-2 px-3 mr-3 py-1  font-semibold rounded-md cursor-pointer transition-colors duration-200 btn-secondary ${location.pathname === "/myCollection"
                 ? "text-[#00A8E7] "
           : "text-white "
               }`}
           >
-            Tuition List
+            Dashboard
           </li>
         </>
       )}

@@ -16,6 +16,7 @@ const useAxiosSecure = () => {
     // REQUEST interceptor
     const reqInterceptor = axiosSecure.interceptors.request.use(
       (config) => {
+        
         if (user?.accessToken) {
           config.headers.authorization = `Bearer ${user.accessToken}`;
         }

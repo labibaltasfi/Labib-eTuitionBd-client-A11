@@ -1,17 +1,17 @@
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Legend, Pie, PieChart, Tooltip } from 'recharts';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+// import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AdminDashboardHome = () => {
-    const axiosSecure = useAxiosSecure();
-    const { data: deliveryStats = [] } = useQuery({
-        queryKey: ['delivery-status-stats'],
-        queryFn: async () => {
-            const res = await axiosSecure.get('/parcels/delivery-status/stats');
-            return res.data;
-        }
-    })
+    // const axiosSecure = useAxiosSecure();
+    // const { data: deliveryStats = [] } = useQuery({
+    //     queryKey: [''],
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get('');
+    //         return res.data;
+    //     }
+    // })
 
     const getPieChartData = data =>{
         return data.map(item => {
@@ -24,7 +24,7 @@ const AdminDashboardHome = () => {
             <h2 className="text-4xl">Admin Dashing</h2>
 
             <div className="stats shadow">
-                {
+                {/* {
                     deliveryStats.map(stat => <div key={stat._id} className="stat">
                         <div className="stat-figure text-secondary">
                             <svg
@@ -45,10 +45,10 @@ const AdminDashboardHome = () => {
                         <div className="stat-value">{stat.count}</div>
                         <div className="stat-desc">Jan 1st - Feb 1st</div>
                     </div>)
-                }
+                } */}
 
             </div>
-            <div className='w-full h-[400px]'>
+            {/* <div className='w-full h-[400px]'>
                 <PieChart style={{ width: '100%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 2 }} responsive>
                     <Pie
                         dataKey="value"
@@ -65,7 +65,7 @@ const AdminDashboardHome = () => {
                     <Legend></Legend>
                     <Tooltip></Tooltip>
                 </PieChart>
-            </div>
+            </div> */}
         </div>
     );
 };
