@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 
 const TuitionDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const { role } = useRole();
 
- 
+
   const {
     register,
     handleSubmit,
@@ -37,29 +39,30 @@ const TuitionDetails = () => {
       tuitionId: id,
       tutorName: user?.displayName,
       tutorEmail: user?.email,
+      tutorPhoto: user?.photoURL,
       qualifications: data.qualifications,
       experience: data.experience,
       expectedSalary: data.expectedSalary,
       status: "pending",
     };
-console.log(application)
+    console.log(application)
     try {
       const res = await axiosSecure.post("/applications", application);
 
       if (res.data.insertedId) {
-          document.getElementById("apply_modal").close();
-          reset();
-          Swal.fire("Success", "Application submitted!", "success");
+        document.getElementById("apply_modal").close();
+        reset();
+        Swal.fire("Success", "Application submitted!", "success");
       }
     } catch (error) {
-         document.getElementById("apply_modal").close();
+      document.getElementById("apply_modal").close();
       Swal.fire("Error", "You have already applied for this tuition post!", "error");
     }
   };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100 p-4">
-   
+
       <div className="max-w-xl w-full bg-white rounded-3xl shadow-xl p-6 space-y-4 border">
         <h2 className="text-3xl font-bold text-center text-[#192489]">
           Tuition Details
@@ -85,18 +88,20 @@ console.log(application)
           <p><strong>Address:</strong> {tuition.streetAddress}</p>
         </div>
 
-      
-        <button
-          onClick={() =>
-            document.getElementById("apply_modal").showModal()
-          }
-          className="w-full mt-4 py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f] transition shadow-lg"
-        >
-          Apply for Tuition
-        </button>
+        {
+          role === 'student' && <button
+            onClick={() =>
+              document.getElementById("apply_modal").showModal()
+            }
+            className="w-full mt-4 py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f] transition shadow-lg"
+          >
+            Apply for Tuition
+          </button>
+        }
+
       </div>
 
-    
+
       <dialog id="apply_modal" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box max-w-md bg-white rounded-2xl">
           <h3 className="text-2xl font-bold mb-6 text-[#192489]">
@@ -107,12 +112,11 @@ console.log(application)
             onSubmit={handleSubmit(handleApply)}
             className="space-y-4"
           >
-            {/* Name */}
             <div>
               <label className="font-semibold text-sm">Name</label>
               <input
                 type="text"
-                value={user?.displayName}
+                value={user?.displayName || ""}
                 readOnly
                 className="w-full p-3 border rounded-lg bg-gray-100"
               />
@@ -123,7 +127,7 @@ console.log(application)
               <label className="font-semibold text-sm">Email</label>
               <input
                 type="email"
-                value={user?.email}
+                value={user?.email || ""}
                 readOnly
                 className="w-full p-3 border rounded-lg bg-gray-100"
               />
@@ -131,9 +135,7 @@ console.log(application)
 
             {/* Qualifications */}
             <div>
-              <label className="font-semibold text-sm">
-                Qualifications
-              </label>
+              <label className="font-semibold text-sm">Qualifications</label>
               <textarea
                 {...register("qualifications", {
                   required: "Qualifications are required",
@@ -142,18 +144,16 @@ console.log(application)
                 className="w-full p-3 border rounded-lg"
               />
               {errors.qualifications && (
-                <p className="text-red-500 text-sm">
+                <p className="text-red-500 text-sm mt-1">
                   {errors.qualifications.message}
                 </p>
               )}
             </div>
 
-            {/* Experience & Salary */}
-            <div className="grid grid-cols-2 gap-3">
+            {/* Experience & Expected Salary */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
-                <label className="font-semibold text-sm">
-                  Experience
-                </label>
+                <label className="font-semibold text-sm">Experience</label>
                 <input
                   {...register("experience", {
                     required: "Experience is required",
@@ -162,27 +162,25 @@ console.log(application)
                   className="w-full p-3 border rounded-lg"
                 />
                 {errors.experience && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 text-sm mt-1">
                     {errors.experience.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="font-semibold text-sm">
-                  Expected Salary
-                </label>
+                <label className="font-semibold text-sm">Expected Salary</label>
                 <input
                   type="number"
                   {...register("expectedSalary", {
                     required: "Expected salary is required",
                     min: { value: 1, message: "Invalid salary" },
                   })}
-                  placeholder={`e.g. ${tuition.budget}`}
+                  placeholder={`e.g. ${tuition?.budget || ""}`}
                   className="w-full p-3 border rounded-lg"
                 />
                 {errors.expectedSalary && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 text-sm mt-1">
                     {errors.expectedSalary.message}
                   </p>
                 )}
@@ -190,7 +188,7 @@ console.log(application)
             </div>
 
             {/* Actions */}
-            <div className="modal-action flex gap-3 pt-4">
+            <div className="flex flex-col md:flex-row gap-3 pt-4">
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -202,7 +200,7 @@ console.log(application)
               <button
                 type="button"
                 onClick={() =>
-                  document.getElementById("apply_modal").close()
+                  document.getElementById("apply_modal")?.close()
                 }
                 className="flex-1 py-3 border rounded-xl font-bold"
               >
@@ -211,7 +209,6 @@ console.log(application)
             </div>
           </form>
         </div>
-
       </dialog>
     </div>
   );

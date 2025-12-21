@@ -5,6 +5,7 @@ import { FaTrashCan } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router';
 
 const TuitionManagement = () => {
 
@@ -74,10 +75,11 @@ const TuitionManagement = () => {
                                     {tuition.workStatus}
                                 </td>
                                 <td>
-                                     <button
-                                         className='btn'>
-                                        <FaEye></FaEye>
-                                    </button>
+                                   <button className='btn'>
+                                     <Link to={`/tuition-details/${tuition._id}`} className="p-4 rounded-xl bg-white   font-medium hover:bg-blue-100 transition">
+                                   <FaEye></FaEye>
+                                </Link>
+                                   </button>
                                     <button
                                         onClick={() => handleApproval(tuition)} className='btn'>
                                         <FaUserCheck />
