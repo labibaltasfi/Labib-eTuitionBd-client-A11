@@ -15,6 +15,7 @@ import AppliedTutors from "../pages/Dashboard/StudentDashboard/AppliedTutors";
 import Home from "../pages/Home/Home";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
+import ErrorPage from "../Error/ErrorPage";
 
 
 
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
        {
         path: "tuition-details/:id",
         Component: TuitionDetails
+      },
+       {
+        path: "/*",
+        element: <ErrorPage></ErrorPage>,
       },
     ]
   },
