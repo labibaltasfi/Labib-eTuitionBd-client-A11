@@ -12,7 +12,7 @@ const PostTuitions = () => {
         register,
         handleSubmit,
         control,
-        // formState: { errors } 
+        formState: { errors }
     } = useForm({
         defaultValues: {
             selectedDays: []
@@ -94,15 +94,16 @@ const PostTuitions = () => {
                     <div className="flex flex-col">
                         <label className="mb-1 font-medium">Class</label>
                         <select
-                            {...register('NameOfclass')}
-                            defaultValue="select class"
+                            {...register("NameOfclass", { required: "Class is required" })}
+                            defaultValue=""
                             className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489] bg-white"
                         >
-                            <option disabled value="select class">Select Class</option>
+                            <option disabled value="">Select Class</option>
                             {NameOfclass.map((word, index) => (
                                 <option key={index} value={word}>{word}</option>
                             ))}
                         </select>
+                        {errors.NameOfclass && <p className="text-red-500 text-sm mt-1">{errors.NameOfclass.message}</p>}
                     </div>
 
                     {/* Subject Name */}
@@ -110,44 +111,56 @@ const PostTuitions = () => {
                         <label className="mb-1 font-medium">Subject Name</label>
                         <input
                             type="text"
-                            {...register('subjectName')}
+                            {...register("subjectName", { required: "Subject is required" })}
                             placeholder="e.g. Mathematics"
                             className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
                         />
+                        {errors.subjectName && <p className="text-red-500 text-sm mt-1">{errors.subjectName.message}</p>}
                     </div>
 
                     {/* Budget */}
                     <div className="flex flex-col">
                         <label className="mb-1 font-medium">Budget (Monthly)</label>
                         <input
-                            type="text"
-                            {...register('budget')}
+                            type="number"
+                            {...register("budget", {
+                                required: "Budget is required",
+                                min: { value: 1, message: "Budget must be at least 1" },
+                            })}
                             placeholder="Amount"
                             className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
                         />
+                        {errors.budget && <p className="text-red-500 text-sm mt-1">{errors.budget.message}</p>}
                     </div>
 
-                    {/* Region and District  */}
+                    {/* Region & District */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Region */}
                         <div className="flex flex-col">
                             <label className="mb-1 font-medium">Tuition Region</label>
                             <select
-                                {...register('tuitionRegion')}
+                                {...register("tuitionRegion", { required: "Region is required" })}
+                                defaultValue=""
                                 className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489] bg-white"
                             >
-                                <option disabled selected>Pick a region</option>
+                                <option disabled value="">Pick a region</option>
                                 {regions.map((r, i) => <option key={i} value={r}>{r}</option>)}
                             </select>
+                            {errors.tuitionRegion && <p className="text-red-500 text-sm mt-1">{errors.tuitionRegion.message}</p>}
                         </div>
+
+                        {/* District */}
                         <div className="flex flex-col">
                             <label className="mb-1 font-medium">Tuition District</label>
                             <select
-                                {...register('tuitionDistrict')}
+                                {...register("tuitionDistrict", { required: "District is required" })}
+                                defaultValue=""
                                 className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489] bg-white"
                             >
-                                <option disabled selected>Pick a district</option>
-                                {districtsByRegion(tuitionRegion).map((d, i) => <option key={i} value={d}>{d}</option>)}
+                                <option disabled value="">Pick a district</option>
+                                {tuitionRegion && districtsByRegion(tuitionRegion).map((d, i) => <option key={i} value={d}>{d}</option>)}
                             </select>
+                            {errors.tuitionDistrict && <p className="text-red-500 text-sm mt-1">{errors.tuitionDistrict.message}</p>}
                         </div>
                     </div>
 
@@ -156,49 +169,48 @@ const PostTuitions = () => {
                         <label className="mb-1 font-medium">Street Address</label>
                         <input
                             type="text"
-                            {...register('streetAddress', { required: "Street address is required" })}
-                            className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                            {...register("streetAddress", { required: "Street address is required" })}
                             placeholder="Subdistrict, Village, Road no, House no"
+                            className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
                         />
+                        {errors.streetAddress && <p className="text-red-500 text-sm mt-1">{errors.streetAddress.message}</p>}
                     </div>
 
-                    {/* Student Name (Read Only) */}
+                    {/* Student Name & Email */}
                     <div className="flex flex-col">
                         <label className="mb-1 font-medium">Student Name</label>
                         <input
                             type="text"
-                            {...register('studentName')}
                             defaultValue={user?.displayName}
                             readOnly
                             className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
                         />
                     </div>
-                    {/* Student Email (Read Only) */}
+
                     <div className="flex flex-col">
                         <label className="mb-1 font-medium">Student Email</label>
                         <input
                             type="text"
-                            {...register('studentEmail')}
                             defaultValue={user?.email}
                             readOnly
                             className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
                         />
                     </div>
 
-                    {/* Schedule Section */}
+                    {/* Schedule */}
                     <label className="mb-1 font-medium">Schedule</label>
                     <div className="p-5 rounded-2xl bg-blue-50 border border-blue-100">
                         <div className="flex flex-col mb-4">
                             <label className="mb-2 font-bold text-[#192489]">Select Tuition Hour</label>
                             <select
-                                {...register('selectedHour')}
+                                {...register("selectedHour", { required: "Hour is required" })}
+                                defaultValue=""
                                 className="p-3 rounded-xl border border-[#192489] font-bold"
                             >
-                                <option disabled selected>Pick a time</option>
-                                {allHours.map((hour, index) => (
-                                    <option key={index} value={hour}>{hour}</option>
-                                ))}
+                                <option disabled value="">Pick a time</option>
+                                {allHours.map((hour, index) => <option key={index} value={hour}>{hour}</option>)}
                             </select>
+                            {errors.selectedHour && <p className="text-red-500 text-sm mt-1">{errors.selectedHour.message}</p>}
                         </div>
 
                         <label className="mb-2 block font-bold text-[#192489]">Select Days</label>
@@ -208,7 +220,7 @@ const PostTuitions = () => {
                                     <input
                                         type="checkbox"
                                         value={day}
-                                        {...register('selectedDays')}
+                                        {...register("selectedDays", { required: "Select at least one day" })}
                                         className="hidden peer"
                                     />
                                     <div className="w-12 h-10 border-2 border-[#192489] rounded-lg flex items-center justify-center font-bold transition-all peer-checked:bg-[#192489] peer-checked:text-white group-hover:scale-105">
@@ -217,11 +229,14 @@ const PostTuitions = () => {
                                 </label>
                             ))}
                         </div>
+
+                        {/* Selected Days Preview */}
                         {watchedDays.length > 0 && (
                             <div className="mt-3 text-xs font-semibold text-blue-700 italic">
                                 Selected: {watchedDays.join(', ')} ({watchedDays.length} days/week)
                             </div>
                         )}
+                        {errors.selectedDays && <p className="text-red-500 text-sm mt-1">{errors.selectedDays.message}</p>}
                     </div>
 
                     {/* Submit Button */}

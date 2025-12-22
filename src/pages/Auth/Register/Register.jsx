@@ -44,17 +44,17 @@ const Register = () => {
                 photoURL
             };
 
-            // Post to MongoDB
+            
             const res = await axiosSecure.post('/users', userInfo);
             if (res.data.insertedId) {
                 console.log('user created in the database');
             }
 
-            // Update Firebase profile
+            
             await updateUser({ displayName: data.name, photoURL });
             console.log('user profile updated done.');
 
-            // Navigate once
+            
             navigate(location.state || '/');
         } catch (error) {
             console.log(error);

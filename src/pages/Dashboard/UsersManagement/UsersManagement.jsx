@@ -22,7 +22,7 @@ const UsersManagement = () => {
         try {
             const res = await axiosSecure.patch(`/users/${user._id}/role`, { role: newRole });
             if (res.data.modifiedCount) {
-                refetch(); // refresh users list
+                refetch(); 
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -60,7 +60,7 @@ const UsersManagement = () => {
                         console.log(res.data);
 
                         if (res.data.deletedCount) {
-                            // refresh the data in the ui
+                            
                             refetch();
 
                             Swal.fire({

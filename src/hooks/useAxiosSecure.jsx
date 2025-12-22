@@ -13,7 +13,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // REQUEST interceptor
+    
     const reqInterceptor = axiosSecure.interceptors.request.use(
       (config) => {
         
@@ -25,7 +25,7 @@ const useAxiosSecure = () => {
       (error) => Promise.reject(error)
     );
 
-    // RESPONSE interceptor
+    
     const resInterceptor = axiosSecure.interceptors.response.use(
       (response) => response,
       async (error) => {

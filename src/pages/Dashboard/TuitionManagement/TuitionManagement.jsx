@@ -50,7 +50,6 @@ const TuitionManagement = () => {
             <h2 className="text-5xl">Tuition Pending Approval: {tuition.length} </h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th></th>

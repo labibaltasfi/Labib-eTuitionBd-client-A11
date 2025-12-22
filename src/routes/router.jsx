@@ -13,6 +13,8 @@ import TuitionManagement from "../pages/Dashboard/TuitionManagement/TuitionManag
 import TuitionDetails from "../pages/Tuitions/TuitionDetails";
 import AppliedTutors from "../pages/Dashboard/StudentDashboard/AppliedTutors";
 import Home from "../pages/Home/Home";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 
 
 
@@ -83,6 +85,14 @@ export const router = createBrowserRouter([
       {
         path: 'applied-tutors',
         Component: AppliedTutors
+      },
+       {
+        path: 'payment/:applicationId',
+        Component: Payment
+      },
+       {
+        path: 'payment-success',
+        Component: PaymentSuccess
       },
     ]
   }
