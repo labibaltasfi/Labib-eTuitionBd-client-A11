@@ -1,5 +1,4 @@
 import React from 'react';
-
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
@@ -9,21 +8,31 @@ const TuitionList = () => {
 
     const axiosSecure = useAxiosSecure();
 
+const {
+  data: tuition = [],
+  isLoading,
+  isError,
+  error,
+} = useQuery({
+  queryKey: ['tuitionlist'],
+  queryFn: async () => {
+    const res = await axiosSecure.get('/tuitionlist');
+    return res.data;
+  },
+});
 
+if (isLoading) {
+  return <div className="text-center mt-10">Loading...</div>;
+}
 
+if (isError) {
+  return (
+    <div className="text-center mt-10 text-red-500">
+      {error?.response?.data?.message || "Failed to load tuition list"}
+    </div>
+  );
+}
 
-    const {
-        data: tuition = [],
-    } = useQuery({
-        queryKey: ['tuitionlist',],
-        queryFn: async () => {
-            const res = await axiosSecure.get('/tuitionlist');
-            return res.data;
-        },
-    });
-
-
-    console.log(tuition)
 
     return (
         <div className="min-h-screen  bg-gray-100 p-4 text-black">

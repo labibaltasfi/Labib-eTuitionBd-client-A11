@@ -26,6 +26,7 @@ import PrivateRoute from "./PrivateRoute";
 import TutorRoute from "./TutorRoute";
 import TutorOngoingTuitions from "../pages/Dashboard/TutorDashboard/TutorOngoingTuitions";
 import RevenueHistory from "../pages/Dashboard/TutorDashboard/RevenueHistory";
+import TuitionList from "../pages/Tuitions/TuitionList";
 
 
 
@@ -96,7 +97,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'tuitionlist',
-         element: <StudentRoute><tuitionList></tuitionList></StudentRoute>
+         element: <StudentRoute><TuitionList></TuitionList></StudentRoute>
       },
       {
         path: 'tutor-ongoing-tuitions',

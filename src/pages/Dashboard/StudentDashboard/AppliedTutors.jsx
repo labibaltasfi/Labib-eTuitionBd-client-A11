@@ -2,19 +2,61 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AppliedTutors = () => {
     const axiosSecure = useAxiosSecure();
-    const {user} = useAuth();
+    const { user } = useAuth();
 
 
-    const { data: tuitions = [], isLoading, isError } = useQuery({
+    const { data: tuitions = [], isLoading, isError, refetch } = useQuery({
         queryKey: ["tuitions-with-applications"],
         queryFn: async () => {
             const res = await axiosSecure.get("/tuitions-with-applications");
             return res.data;
         },
     });
+
+
+    
+
+    const handleReject = async (appId) => {
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "This tutor application will be rejected!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#e3342f",
+            cancelButtonColor: "#6b7280",
+            confirmButtonText: "Yes, Reject",
+            cancelButtonText: "Cancel",
+        });
+
+        if (!result.isConfirmed) return;
+
+        try {
+            await axiosSecure.patch(`/applications/reject/${appId}`);
+
+            Swal.fire({
+                icon: "success",
+                title: "Rejected!",
+                text: "The tutor application has been rejected.",
+                timer: 1500,
+                showConfirmButton: false,
+            });
+
+            refetch();
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Failed!",
+                text: "Something went wrong. Please try again.",
+            });
+            console.error(error);
+        }
+    };
+
+
 
 
 
@@ -28,12 +70,12 @@ const AppliedTutors = () => {
         const paymentInfo = {
             studentName: user.displayName,
             studentEmail: user.email,
-            expectedSalary:  Number(app.expectedSalary),
+            expectedSalary: Number(app.expectedSalary),
             applicationId: app._id,
             tuitionId: app.tuitionId,
             tutorEmail: app.tutorEmail,
             tutorName: app.tutorName,
-             trackingId: app.trackingId
+            trackingId: app.trackingId
         }
         const res = await axiosSecure.post('/payment-checkout-session', paymentInfo);
 
@@ -50,7 +92,7 @@ const AppliedTutors = () => {
                     key={tuition._id}
                     className="border rounded-xl shadow p-4 mb-6 hover:shadow-lg transition"
                 >
-                
+
                     <div className="flex justify-between items-center mb-4">
                         <div>
                             <h2 className="text-xl font-semibold">
@@ -91,18 +133,37 @@ const AppliedTutors = () => {
 
 
                                     <div className="flex space-x-2 mt-4 md:mt-0">
-                                        {
-                                            app.status === 'approved' ?
-                                                <button className='px-4  py-4 bg-green-500 text-white rounded-xl font-bold hover:bg-[#141d6f] transition shadow-lg'>Paid</button>
-                                                :
-                                                <button onClick={() => handlePayment(app)} className="px-4  py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f] transition shadow-lg">
+                                        {app.status === 'approved' && (
+                                            <button className="px-4 py-4 bg-green-500 text-white rounded-xl font-bold">
+                                                Paid
+                                            </button>
+                                        )}
+
+                                        {app.status === 'pending' && (
+                                            <>
+                                                <button
+                                                    onClick={() => handlePayment(app)}
+                                                    className="px-4 py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f]"
+                                                >
                                                     Accept
                                                 </button>
-                                        }
-                                        <button className="px-4 py-2 bg-red-500 font-bold text-white rounded-lg hover:bg-red-600 transition">
-                                            Reject
-                                        </button>
+
+                                                <button
+                                                    onClick={() => handleReject(app._id)}
+                                                    className="px-4 py-4 bg-red-500 text-white rounded-xl font-bold hover:bg-red-600"
+                                                >
+                                                    Reject
+                                                </button>
+                                            </>
+                                        )}
+
+                                        {app.status === 'rejected' && (
+                                            <button className="px-4 py-4 bg-gray-400 text-white rounded-xl font-bold cursor-not-allowed">
+                                                Rejected
+                                            </button>
+                                        )}
                                     </div>
+
                                 </div>
                             ))}
                         </div>

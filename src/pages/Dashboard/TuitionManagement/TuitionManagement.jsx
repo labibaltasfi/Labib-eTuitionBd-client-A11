@@ -71,11 +71,8 @@ const TuitionManagement = () => {
                                     <p className={`${tuition.status === 'approved' ? 'text-green-800' : 'text-red-500'}`}>{tuition.status}</p>
                                 </td>
                                 <td>
-                                    {tuition.workStatus}
-                                </td>
-                                <td>
                                    <button className='btn'>
-                                     <Link to={`/tuition-details/${tuition._id}`} className="p-4 rounded-xl bg-white   font-medium hover:bg-blue-100 transition">
+                                     <Link to={`/tuition-details/${tuition._id}`} className=" rounded-xl bg-transparent   font-medium hover:bg-blue-100 transition">
                                    <FaEye></FaEye>
                                 </Link>
                                    </button>

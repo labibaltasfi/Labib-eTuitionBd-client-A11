@@ -17,13 +17,13 @@ const RevenueHistory = () => {
 
     return (
         <div className="p-6">
-            {/* Summary Cards */}
+           
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <Card title="Gross Amount Paid" amount={data.totals.totalGross} bg="bg-[#192489]" />
                 <Card title="Your Net Earnings (80%)" amount={data.totals.totalNet} bg="bg-emerald-600" />
             </div>
 
-            {/* History Table */}
+           
             <div className="overflow-x-auto bg-white rounded-2xl border border-gray-100 shadow-sm">
                 <table className="table w-full border-collapse">
                     <thead>
@@ -39,7 +39,7 @@ const RevenueHistory = () => {
                         {data.history.map((item) => (
                             <tr key={item._id.$oid} className="hover:bg-gray-50 transition-colors">
                                 <td className="py-4 px-6 text-sm text-gray-500">
-                                    {new Date(item.paidAt.$date).toLocaleDateString()}
+                                    {new Date(item.paidAt).toLocaleDateString()}
                                 </td>
                                 <td>
                                     <div className="font-bold text-gray-800 capitalize">{item.studentName}</div>
@@ -61,7 +61,7 @@ const RevenueHistory = () => {
     );
 };
 
-// Small reusable card component
+
 const Card = ({ title, amount, bg }) => (
     <div className={`${bg} text-white p-6 rounded-2xl shadow-xl`}>
         <p className="text-xs font-medium uppercase tracking-wider">{title}</p>

@@ -21,7 +21,7 @@ const TuitionDetails = () => {
   } = useForm();
 
 
-  const { data: tuition = {}, isLoading } = useQuery({
+  const { data: tuition = {}, isLoading, refetch } = useQuery({
     queryKey: ["tuition-details", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/tuitionlist/${id}`);
@@ -69,6 +69,7 @@ const TuitionDetails = () => {
       if (res.data.insertedId) {
         document.getElementById("apply_modal").close();
         reset();
+        refetch()
         Swal.fire("Success", "Application submitted!", "success");
       }
     } catch (error) {
@@ -108,7 +109,7 @@ const TuitionDetails = () => {
         {role === 'tutor' && (
           appStatus?.applied ? (
             <div className="w-full mt-4 py-4 bg-gray-100 text-gray-500 rounded-xl font-bold text-center border-2 border-dashed">
-              Applied 
+              Applied
             </div>
           ) : (
             <button

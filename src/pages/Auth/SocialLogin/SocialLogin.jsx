@@ -39,7 +39,6 @@ const SocialLogin = () => {
 
     return (
         <div className='text-center pb-8'>
-            <p className='mb-2'>OR</p>
             <button
                 onClick={handleGoogleSignIn}
                 className="w-full cursor-pointer py-3 sm:py-4 rounded-xl bg-white text-gray-800 font-semibold

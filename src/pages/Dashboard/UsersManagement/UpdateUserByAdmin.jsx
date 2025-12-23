@@ -4,6 +4,8 @@ import { useLoaderData, useNavigate } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../../firebase/firebase.init";
 
 const UpdateUserByAdmin = () => {
     const axiosSecure = useAxiosSecure();
@@ -46,6 +48,13 @@ const UpdateUserByAdmin = () => {
                 const imgRes = await axios.post(imageAPI, formData);
                 photoURL = imgRes.data.data.url;
             }
+
+
+            await updateProfile(auth.currentUser, {
+                  displayName: data.name,
+                  photoURL: photoURL,
+                });
+            
 
             const updatedUser = {
                 displayName: data.name,

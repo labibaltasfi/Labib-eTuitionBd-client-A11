@@ -5,6 +5,10 @@ import logoImg from '../assets/open-book.png';
 import useRole from '../hooks/useRole';
 import { FaBookOpenReader, FaRegCreditCard, FaUserCheck } from 'react-icons/fa6';
 import { BsFillClipboardPlusFill } from 'react-icons/bs';
+import { HiClipboardList } from "react-icons/hi";
+import { PiPresentationChartDuotone } from "react-icons/pi";
+import { RiHistoryFill } from "react-icons/ri";
+
 
 const DashboardLayout = () => {
       const { role } = useRole();
@@ -101,19 +105,19 @@ const DashboardLayout = () => {
 
                                 <li>
                                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Applications" to="/dashboard/my-applications">
-                                         <FaUsersCog />
+                                         <HiClipboardList />
                                         <span className="is-drawer-close:hidden">My Applications</span>
                                     </NavLink>
                                 </li>
                                  <li>
                                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Tutor Ongoing Tuitions" to="/dashboard/tutor-ongoing-tuitions">
-                                        <FaBookOpenReader />
+                                        <PiPresentationChartDuotone />
                                         <span className="is-drawer-close:hidden">Tutor Ongoing Tuitions</span>
                                     </NavLink>
                                 </li>
                                  <li>
                                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue History" to="/dashboard/revenue-history">
-                                         <FaUsersCog />
+                                         <RiHistoryFill />
                                         <span className="is-drawer-close:hidden">Revenue History</span>
                                     </NavLink>
                                 </li>
