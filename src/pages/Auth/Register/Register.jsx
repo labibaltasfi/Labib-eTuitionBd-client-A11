@@ -22,7 +22,7 @@ const Register = () => {
             console.log('after register', data.photo[0]);
             const profileImg = data.photo[0];
 
-            // Create Firebase user
+           
             const result = await createUser(data.email, data.password);
             console.log(result.user);
 

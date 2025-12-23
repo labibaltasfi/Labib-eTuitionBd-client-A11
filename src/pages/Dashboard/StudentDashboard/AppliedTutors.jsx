@@ -1,9 +1,11 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
 
 const AppliedTutors = () => {
     const axiosSecure = useAxiosSecure();
+    const {user} = useAuth();
 
 
     const { data: tuitions = [], isLoading, isError } = useQuery({
@@ -24,10 +26,14 @@ const AppliedTutors = () => {
 
     const handlePayment = async (app) => {
         const paymentInfo = {
-            expectedSalary: app.expectedSalary,
+            studentName: user.displayName,
+            studentEmail: user.email,
+            expectedSalary:  Number(app.expectedSalary),
             applicationId: app._id,
+            tuitionId: app.tuitionId,
             tutorEmail: app.tutorEmail,
             tutorName: app.tutorName,
+             trackingId: app.trackingId
         }
         const res = await axiosSecure.post('/payment-checkout-session', paymentInfo);
 
@@ -44,7 +50,7 @@ const AppliedTutors = () => {
                     key={tuition._id}
                     className="border rounded-xl shadow p-4 mb-6 hover:shadow-lg transition"
                 >
-                    {/* Tuition Info */}
+                
                     <div className="flex justify-between items-center mb-4">
                         <div>
                             <h2 className="text-xl font-semibold">
@@ -86,7 +92,7 @@ const AppliedTutors = () => {
 
                                     <div className="flex space-x-2 mt-4 md:mt-0">
                                         {
-                                            app.status === 'paid' ?
+                                            app.status === 'approved' ?
                                                 <button className='px-4  py-4 bg-green-500 text-white rounded-xl font-bold hover:bg-[#141d6f] transition shadow-lg'>Paid</button>
                                                 :
                                                 <button onClick={() => handlePayment(app)} className="px-4  py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f] transition shadow-lg">
@@ -100,7 +106,6 @@ const AppliedTutors = () => {
                                 </div>
                             ))}
                         </div>
-
                     ) : (
                         <p className="text-gray-500">No tutors applied yet.</p>
                     )}

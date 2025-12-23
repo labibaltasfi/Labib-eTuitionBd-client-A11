@@ -7,7 +7,6 @@ import tuitionList from "../pages/Tuitions/TuitionList";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
-import UpdateUser from "../pages/Dashboard/UsersManagement/UpdateUser";
 import UserDetails from "../pages/Dashboard/UsersManagement/UserDetails";
 import TuitionManagement from "../pages/Dashboard/TuitionManagement/TuitionManagement";
 import TuitionDetails from "../pages/Tuitions/TuitionDetails";
@@ -16,6 +15,10 @@ import Home from "../pages/Home/Home";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import ErrorPage from "../Error/ErrorPage";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
+import UpdateUserByAdmin from "../pages/Dashboard/UsersManagement/UpdateUserByadmin";
+import UpdateUser from "../pages/Dashboard/UsersManagement/UpdateUser";
 
 
 
@@ -23,6 +26,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
     children: [
        {
         index: true,
@@ -61,15 +65,15 @@ export const router = createBrowserRouter([
       {
         path: "users-management/:id",
         loader: async ({ params }) => {
-          const res = await fetch(`http://localhost:3000/updateUser/${params.id}`);
+          const res = await fetch(`https://labib-e-tuition-bd-server-a11.vercel.app/updateUser/${params.id}`);
           return res.json();
         },
-        element: <UpdateUser></UpdateUser>
+        element: <UpdateUserByAdmin></UpdateUserByAdmin>
       },
       {
         path: "users-management/user-details/:id",
         loader: async ({ params }) => {
-          const res = await fetch(`http://localhost:3000/updateUser/${params.id}`);
+          const res = await fetch(`https://labib-e-tuition-bd-server-a11.vercel.app/updateUser/${params.id}`);
           return res.json();
         },
         element: <UserDetails></UserDetails>
@@ -98,6 +102,14 @@ export const router = createBrowserRouter([
        {
         path: 'payment-success',
         Component: PaymentSuccess
+      },
+       {
+        path: 'payments-history',
+        Component: PaymentHistory
+      },
+       {
+        path: 'profile-setting',
+        Component: UpdateUser
       },
     ]
   }

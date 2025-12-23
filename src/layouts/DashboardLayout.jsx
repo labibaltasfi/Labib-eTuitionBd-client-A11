@@ -82,13 +82,13 @@ const DashboardLayout = () => {
                                     </NavLink>
                                 </li>
                                  <li>
-                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payments" to="/dashboard/Payments">
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payments History" to="/dashboard/payments-history">
                                         <FaRegCreditCard />
-                                        <span className="is-drawer-close:hidden">Payments</span>
+                                        <span className="is-drawer-close:hidden">Payments History</span>
                                     </NavLink>
                                 </li>
                                  <li>
-                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile Settings" to="/dashboard/profile-settings">
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profile Settings" to="/dashboard/profile-setting">
                                         <FaUserCog />
                                         <span className="is-drawer-close:hidden">Profile Settings</span>
                                     </NavLink>

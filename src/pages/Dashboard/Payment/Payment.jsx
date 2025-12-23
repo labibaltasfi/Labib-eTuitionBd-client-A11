@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useParams } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../hooks/useAuth';
 
 
 const Payment = () => {
+    const {user} = useAuth();
     const { applicationId } = useParams();
     const axiosSecure = useAxiosSecure();
 
@@ -18,7 +20,11 @@ const Payment = () => {
 
     const handlePayment = async() => {
         const paymentInfo = {
+            studentName: user.displayName,
+            studentEmail: user.email,
             tutorName: applications.tutorName,
+            tuitionId: applications.tuitionId,
+            tutorEmail: applications.tutorEmail,
             expectedSalary: applications.expectedSalary,
             applicationId: applications._id,
         }

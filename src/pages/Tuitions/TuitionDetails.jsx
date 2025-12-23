@@ -89,7 +89,7 @@ const TuitionDetails = () => {
         </div>
 
         {
-          role === 'tutor' && <button
+          role === 'student' && <button
             onClick={() =>
               document.getElementById("apply_modal").showModal()
             }
