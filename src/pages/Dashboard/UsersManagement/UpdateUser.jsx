@@ -32,9 +32,6 @@ const UpdateUser = () => {
     },
   });
 
-  /* =========================
-     React Hook Form
-  ========================== */
   const {
     register,
     handleSubmit,
@@ -42,7 +39,7 @@ const UpdateUser = () => {
     formState: { errors },
   } = useForm();
 
-  // 🔥 reset form when data arrives
+ 
   useEffect(() => {
     if (dbUser) {
       reset({
@@ -52,16 +49,12 @@ const UpdateUser = () => {
     }
   }, [dbUser, reset]);
 
-  /* =========================
-     Update handler
-  ========================== */
+ 
   const handleUpdateUser = async (data) => {
   try {
     let photoURL = dbUser.photoURL;
 
-    /* =========================
-       Upload image if changed
-    ========================== */
+   
     if (data.photo?.length > 0) {
       const formData = new FormData();
       formData.append("image", data.photo[0]);
@@ -74,17 +67,13 @@ const UpdateUser = () => {
       photoURL = imgRes.data.data.url;
     }
 
-    /* =========================
-       1️⃣ Update Firebase Auth
-    ========================== */
+ 
     await updateProfile(auth.currentUser, {
       displayName: data.name,
       photoURL: photoURL,
     });
 
-    /* =========================
-       2️⃣ Update Database
-    ========================== */
+   
     const updatedUser = {
       displayName: data.name,
       mobile: data.mobile,
@@ -114,9 +103,7 @@ const UpdateUser = () => {
 };
 
 
-  /* =========================
-     UI States
-  ========================== */
+  
   if (isLoading) {
     return <div className="text-center mt-10">Loading...</div>;
   }
@@ -125,9 +112,7 @@ const UpdateUser = () => {
     return <div className="text-center mt-10 text-red-500">Failed to load user</div>;
   }
 
-  /* =========================
-     JSX
-  ========================== */
+  
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-10">
       <div className="card bg-white text-gray-800 py-8 px-6 w-full max-w-xl rounded-3xl shadow-2xl">
