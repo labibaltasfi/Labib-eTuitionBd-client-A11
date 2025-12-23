@@ -96,6 +96,30 @@ const DashboardLayout = () => {
                             </>
                         }
 
+                         {
+                            role === 'tutor' && <>
+
+                                <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Applications" to="/dashboard/my-applications">
+                                         <FaUsersCog />
+                                        <span className="is-drawer-close:hidden">My Applications</span>
+                                    </NavLink>
+                                </li>
+                                 <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Tutor Ongoing Tuitions" to="/dashboard/tutor-ongoing-tuitions">
+                                        <FaBookOpenReader />
+                                        <span className="is-drawer-close:hidden">Tutor Ongoing Tuitions</span>
+                                    </NavLink>
+                                </li>
+                                 <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue History" to="/dashboard/revenue-history">
+                                         <FaUsersCog />
+                                        <span className="is-drawer-close:hidden">Revenue History</span>
+                                    </NavLink>
+                                </li>
+                            </>
+                        }
+
 
                         {/* List item */}
                         <li>

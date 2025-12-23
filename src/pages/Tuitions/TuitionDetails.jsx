@@ -25,6 +25,7 @@ const TuitionDetails = () => {
     queryKey: ["tuition-details", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/tuitionlist/${id}`);
+      console.log(res.data[0])
       return res.data;
     },
   });
@@ -39,6 +40,9 @@ const TuitionDetails = () => {
       tuitionId: id,
       tutorName: user?.displayName,
       tutorEmail: user?.email,
+      StudentName: tuition?.studentName,
+      NameOfclass: tuition?.NameOfclass,
+      subjectName: tuition?.subjectName,
       tutorPhoto: user?.photoURL,
       qualifications: data.qualifications,
       experience: data.experience,

@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/open-book.png'
+import logo from '../../assets/open-book.png'
 
 
 const LoadingSpinner = () => {

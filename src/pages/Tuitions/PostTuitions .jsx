@@ -181,7 +181,8 @@ const PostTuitions = () => {
                         <label className="mb-1 font-medium">Student Name</label>
                         <input
                             type="text"
-                            defaultValue={user?.displayName}
+                            {...register("studentName")}
+                            value={user?.displayName || ""}
                             readOnly
                             className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
                         />
@@ -191,7 +192,8 @@ const PostTuitions = () => {
                         <label className="mb-1 font-medium">Student Email</label>
                         <input
                             type="text"
-                            defaultValue={user?.email}
+                            {...register("studentEmail")}
+                            value={user?.email || ""}
                             readOnly
                             className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
                         />

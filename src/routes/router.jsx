@@ -15,10 +15,14 @@ import Home from "../pages/Home/Home";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
 import ErrorPage from "../Error/ErrorPage";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../components/Loading/LoadingSpinner";
 import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import UpdateUserByAdmin from "../pages/Dashboard/UsersManagement/UpdateUserByadmin";
 import UpdateUser from "../pages/Dashboard/UsersManagement/UpdateUser";
+import MyApplications from "../pages/Dashboard/TutorDashboard/MyApplications";
+import StudentRoute from "./StudentRoute";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -42,7 +46,7 @@ export const router = createBrowserRouter([
       },
        {
         path: "tuition-details/:id",
-        Component: TuitionDetails
+        element: <PrivateRoute></PrivateRoute>
       },
        {
         path: "/*",
@@ -59,8 +63,8 @@ export const router = createBrowserRouter([
         Component: DashboardHome
       },
       {
-        path: 'users-management',
-        element: <UsersManagement></UsersManagement>
+        path: 'users-management', 
+        element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>
       },
       {
         path: "users-management/:id",
@@ -68,7 +72,7 @@ export const router = createBrowserRouter([
           const res = await fetch(`https://labib-e-tuition-bd-server-a11.vercel.app/updateUser/${params.id}`);
           return res.json();
         },
-        element: <UpdateUserByAdmin></UpdateUserByAdmin>
+         element: <AdminRoute><UpdateUserByAdmin></UpdateUserByAdmin></AdminRoute>
       },
       {
         path: "users-management/user-details/:id",
@@ -76,11 +80,11 @@ export const router = createBrowserRouter([
           const res = await fetch(`https://labib-e-tuition-bd-server-a11.vercel.app/updateUser/${params.id}`);
           return res.json();
         },
-        element: <UserDetails></UserDetails>
+         element: <AdminRoute><UserDetails></UserDetails></AdminRoute>
       },
       {
         path: 'tuition-management',
-        element: <TuitionManagement></TuitionManagement>
+        element: <AdminRoute><TuitionManagement></TuitionManagement></AdminRoute>
       },
       {
         path: 'PostTuitions',
@@ -93,7 +97,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'applied-tutors',
-        Component: AppliedTutors
+        element: <StudentRoute><AppliedTutors></AppliedTutors></StudentRoute>
       },
        {
         path: 'payment/:applicationId',
@@ -101,15 +105,19 @@ export const router = createBrowserRouter([
       },
        {
         path: 'payment-success',
-        Component: PaymentSuccess
+        element: <StudentRoute><PaymentSuccess></PaymentSuccess></StudentRoute>
       },
        {
         path: 'payments-history',
-        Component: PaymentHistory
+        element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
       },
        {
         path: 'profile-setting',
-        Component: UpdateUser
+        element: <StudentRoute><UpdateUser></UpdateUser></StudentRoute>
+      },
+       {
+        path: 'my-applications',
+        Component: MyApplications
       },
     ]
   }
