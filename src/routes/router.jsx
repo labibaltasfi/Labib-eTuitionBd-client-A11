@@ -23,6 +23,8 @@ import MyApplications from "../pages/Dashboard/TutorDashboard/MyApplications";
 import StudentRoute from "./StudentRoute";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import TutorRoute from "./TutorRoute";
+import TutorOngoingTuitions from "../pages/Dashboard/TutorDashboard/TutorOngoingTuitions";
 
 
 
@@ -96,6 +98,10 @@ export const router = createBrowserRouter([
         Component: tuitionList
       },
       {
+        path: 'tutor-ongoing-tuitions',
+        element: <TutorRoute><TutorOngoingTuitions></TutorOngoingTuitions></TutorRoute>
+      },
+      {
         path: 'applied-tutors',
         element: <StudentRoute><AppliedTutors></AppliedTutors></StudentRoute>
       },
@@ -117,7 +123,7 @@ export const router = createBrowserRouter([
       },
        {
         path: 'my-applications',
-        Component: MyApplications
+        element: <TutorRoute><MyApplications></MyApplications></TutorRoute>
       },
     ]
   }

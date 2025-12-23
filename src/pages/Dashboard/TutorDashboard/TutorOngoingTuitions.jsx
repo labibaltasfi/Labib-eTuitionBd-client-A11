@@ -1,26 +1,26 @@
 import React from 'react';
-
-import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 
-const TuitionList = () => {
+const TutorOngoingTuitions = () => {
    
     const axiosSecure = useAxiosSecure();
    
 
    
 
-const {
-  data: tuition = [],
-} = useQuery({
-  queryKey: ['tuitionlist', ],
+const { data: tuition = [] } = useQuery({
+  queryKey: ['tuitionlist', 'approved', 'unpaid'],
   queryFn: async () => {
-    const res = await axiosSecure.get('/tuitionlist');
+    const res = await axiosSecure.get(
+      '/tuitionlist/approved?status=approved&paymentStatus=unpaid'
+    );
     return res.data;
   },
 });
+
 
 
 console.log(tuition)
@@ -55,4 +55,4 @@ console.log(tuition)
     );
 };
 
-export default TuitionList;
+export default TutorOngoingTuitions;
