@@ -25,6 +25,7 @@ import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import TutorRoute from "./TutorRoute";
 import TutorOngoingTuitions from "../pages/Dashboard/TutorDashboard/TutorOngoingTuitions";
+import RevenueHistory from "../pages/Dashboard/TutorDashboard/RevenueHistory";
 
 
 
@@ -48,7 +49,7 @@ export const router = createBrowserRouter([
       },
        {
         path: "tuition-details/:id",
-        element: <PrivateRoute></PrivateRoute>
+        element: <PrivateRoute><TuitionDetails></TuitionDetails></PrivateRoute>
       },
        {
         path: "/*",
@@ -95,7 +96,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'tuitionlist',
-        Component: tuitionList
+         element: <StudentRoute><tuitionList></tuitionList></StudentRoute>
       },
       {
         path: 'tutor-ongoing-tuitions',
@@ -124,6 +125,10 @@ export const router = createBrowserRouter([
        {
         path: 'my-applications',
         element: <TutorRoute><MyApplications></MyApplications></TutorRoute>
+      },
+       {
+        path: 'revenue-history',
+        element: <TutorRoute><RevenueHistory></RevenueHistory></TutorRoute>
       },
     ]
   }

@@ -30,9 +30,22 @@ const TuitionDetails = () => {
     },
   });
 
+  const checkApplicationStatus = async (email, tuitionId) => {
+    if (!email || !tuitionId) return null;
+    const { data } = await axiosSecure.get(`/applications/check?email=${email}&tuitionId=${tuitionId}`);
+    return data;
+  };
+
+  const { data: appStatus } = useQuery({
+    queryKey: ['application', tuition._id, user?.email],
+    queryFn: () => checkApplicationStatus(user?.email, tuition._id),
+    enabled: !!user?.email && !!tuition._id,
+  });
+
   if (isLoading) {
     return <p className="text-center mt-10">Loading...</p>;
   }
+
 
 
   const handleApply = async (data) => {
@@ -92,16 +105,20 @@ const TuitionDetails = () => {
           <p><strong>Address:</strong> {tuition.streetAddress}</p>
         </div>
 
-        {
-          role === 'tutor' && <button
-            onClick={() =>
-              document.getElementById("apply_modal").showModal()
-            }
-            className="w-full mt-4 py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f] transition shadow-lg"
-          >
-            Apply for Tuition
-          </button>
-        }
+        {role === 'tutor' && (
+          appStatus?.applied ? (
+            <div className="w-full mt-4 py-4 bg-gray-100 text-gray-500 rounded-xl font-bold text-center border-2 border-dashed">
+              Applied 
+            </div>
+          ) : (
+            <button
+              onClick={() => document.getElementById("apply_modal").showModal()}
+              className="w-full mt-4 py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f] transition"
+            >
+              Apply for Tuition
+            </button>
+          )
+        )}
 
       </div>
 

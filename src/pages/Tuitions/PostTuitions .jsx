@@ -182,7 +182,7 @@ const PostTuitions = () => {
                         <input
                             type="text"
                             {...register("studentName")}
-                            value={user?.displayName || ""}
+                            value={user?.displayName}
                             readOnly
                             className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
                         />
@@ -193,7 +193,7 @@ const PostTuitions = () => {
                         <input
                             type="text"
                             {...register("studentEmail")}
-                            value={user?.email || ""}
+                            value={user?.email}
                             readOnly
                             className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
                         />
