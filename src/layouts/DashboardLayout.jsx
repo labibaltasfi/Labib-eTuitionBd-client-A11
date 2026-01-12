@@ -8,6 +8,7 @@ import { BsFillClipboardPlusFill } from 'react-icons/bs';
 import { HiClipboardList } from "react-icons/hi";
 import { PiPresentationChartDuotone } from "react-icons/pi";
 import { RiHistoryFill } from "react-icons/ri";
+import { TbReportMoney } from "react-icons/tb";
 
 
 const DashboardLayout = () => {
@@ -38,7 +39,7 @@ const DashboardLayout = () => {
                             <Link to="/"><img src={logoImg} alt="" /></Link>
                         </li>
                         <li>
-                            <Link to="/dashboard" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
+                            <Link to="/" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
                                
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
                                 <span className="is-drawer-close:hidden">Homepage</span>
@@ -48,8 +49,14 @@ const DashboardLayout = () => {
 
                         {/* admin only links  */}
                        {
-                            role === 'admin' && <>
+                            role === 'admin'   && <>
 
+                                <li>
+                                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="dashboard" to="/dashboard">
+                                        <TbReportMoney />
+                                        <span className="is-drawer-close:hidden">Reports & Analytics</span>
+                                    </NavLink>
+                                </li>
                                 <li>
                                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Users Management" to="/dashboard/users-management">
                                          <FaUsersCog />

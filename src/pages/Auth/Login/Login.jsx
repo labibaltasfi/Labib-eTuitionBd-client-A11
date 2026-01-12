@@ -6,8 +6,8 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
-  const {signIn} = useAuth();
-   const navigate = useNavigate();
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,13 +16,28 @@ const Login = () => {
 
   const handleLogin = (data) => {
     signIn(data.email, data.password)
-            .then(result => {
-                console.log(result.user)
-                navigate(location?.state || '/')
-               
-            })
+      .then(result => {
+        console.log(result.user)
+        navigate(location?.state || '/')
+
+      })
 
   };
+
+  const handleDemoLogin = async () => {
+    const demoUser = {
+      email: "demo@demo.com",
+      password: "Asdf@1234"
+    };
+
+    try {
+      const res = await signIn(demoUser.email, demoUser.password);
+      navigate("/demo-user");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
 
   return (
@@ -95,6 +110,13 @@ const Login = () => {
 
         {/* Google Login */}
         <SocialLogin></SocialLogin>
+        {/* demo login  */}
+        <button
+          onClick={handleDemoLogin}
+          className="btn rounded-xl py-7 btn-secondary w-full mt-6"
+        >
+          Try Demo Account
+        </button>
 
         {/* Register link */}
         <p className="pt-4 sm:pt-6 text-center text-gray-600">

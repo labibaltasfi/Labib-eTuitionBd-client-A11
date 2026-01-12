@@ -69,7 +69,6 @@ const TuitionDetails = () => {
       if (res.data.insertedId) {
         document.getElementById("apply_modal").close();
         reset();
-        refetch()
         Swal.fire("Success", "Application submitted!", "success");
       }
     } catch (error) {

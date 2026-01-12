@@ -1,12 +1,15 @@
 import React from 'react';
 import Banner from './Banner';
+import DemoUser from './DemoUser';
+import ScrollButtons from './ScrollButtons';
 
-const Home = () => {
+function Home() {
     return (
-        <div className='w-10/12 mx-auto'>
-             <Banner></Banner>
+        <div className='w-9/12 mx-auto'>
+            <Banner></Banner>
+            <ScrollButtons></ScrollButtons>
         </div>
     );
-};
+}
 
 export default Home;

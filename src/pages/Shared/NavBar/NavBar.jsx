@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 
 import logo from "../../../assets/open-book.png"
 import { AuthContext } from "../../../context/AuthContext";
+import ThemeToggle from "../../../components/ThemeToggle/ThemeToggle";
 
 
 
@@ -70,7 +71,7 @@ const Navbar = () => {
       {user && (
         <>
           <li
-            onClick={() => handleNavigation("/PostTuitions")}
+            onClick={() => handleNavigation("/tutor-ongoing-tuitions")}
             className={`my-2 px-3 mr-3 py-1  font-semibold rounded-md cursor-pointer transition-colors duration-200 btn-secondary ${location.pathname === "/myCollection"
                 ? "text-[#00A8E7] "
           : "text-white "
@@ -103,10 +104,10 @@ const Navbar = () => {
         </div>
       )}
 
-      <div className="navbar xl:px-20">
+      <div className="navbar xl:w-9/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden ">
+            <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden ">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
             </div>
             <ul
@@ -115,16 +116,16 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="btn btn-ghost text-xl">
-            <img className="w-10 h-10" src={logo} alt="" />
-            <span onClick={() => handleNavigation("/")} className="sm:font-extrabold font-bold text-white ">
+          <div onClick={() => handleNavigation("/")} className="flex items-center cursor-pointer text-xl">
+            <img className="w-10 h-10 mr-1" src={logo} alt="" />
+            <span  className="sm:font-extrabold font-bold text-white ">
               eTutionbd
             </span>
           </div>
         </div>
 
         <div className="navbar-center">
-          <ul className="menu menu-horizontal px-1 gap-5  text-[#0B3954] text-2xl  hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 gap-5  text-[#0B3954] text-2xl  hidden xl:flex">
             {
               links
             }
@@ -133,8 +134,8 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-
-          <div className='login-btn flex  text-[#0B3954] text-2xl font-semibold items-center px-4'>
+          <ThemeToggle />
+          <div className='login-btn flex  text-[#0B3954] text-2xl font-semibold items-center '>
             {
               !user && (
                 <div className="dropdown dropdown-end">
@@ -156,7 +157,6 @@ const Navbar = () => {
             }
             <div>
               {user && (
-
                 <div className="dropdown dropdown-end">
                   <div tabIndex={0} role="button" className="cursor-pointer">
                     <img

@@ -7,7 +7,7 @@ import logo from "../../../assets/open-book.png"
 const Footer = () => {
     return (
         <footer className="bg-[#151B72] text-gray-300 py-6 pt-12">
-            <div className="p-5 w-11/12 mx-auto">
+            <div className="py-5 md:w-9/12 mx-auto">
                 <div className="grid lg:grid-cols-5 grid-cols-3  mb-20 ">
                     <div className="lg:col-span-2 col-span-3">
                         <h2 className="font-extrabold text-4xl flex text-white items-center pb-5">

@@ -27,6 +27,9 @@ import TutorRoute from "./TutorRoute";
 import TutorOngoingTuitions from "../pages/Dashboard/TutorDashboard/TutorOngoingTuitions";
 import RevenueHistory from "../pages/Dashboard/TutorDashboard/RevenueHistory";
 import TuitionList from "../pages/Tuitions/TuitionList";
+import DemoUser from "../pages/Home/DemoUser";
+import About from "../pages/Home/About";
+import Contact from "../pages/Home/Contact";
 
 
 
@@ -53,6 +56,22 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><TuitionDetails></TuitionDetails></PrivateRoute>
       },
        {
+        path: "demo-user",
+        element: <PrivateRoute><DemoUser></DemoUser></PrivateRoute>
+      },
+       {
+        path: "about",
+        element: <PrivateRoute><About></About></PrivateRoute>
+      },
+       {
+        path: "contact",
+        element: <PrivateRoute><Contact></Contact></PrivateRoute>
+      },
+       {
+        path: 'tutor-ongoing-tuitions',
+         element: <PrivateRoute><TutorOngoingTuitions></TutorOngoingTuitions></PrivateRoute>
+      },
+       {
         path: "/*",
         element: <ErrorPage></ErrorPage>,
       },
@@ -60,7 +79,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [
       {
         index: true,
