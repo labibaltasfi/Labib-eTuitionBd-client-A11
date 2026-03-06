@@ -2,11 +2,16 @@ import React from 'react';
 import Banner from './Banner';
 import DemoUser from './DemoUser';
 import ScrollButtons from './ScrollButtons';
+import LatestTuitionPosts from './LatestTuitionPosts';
+import LatestTutors from './LatestTutors';
 
 function Home() {
     return (
-        <div className='w-9/12 mx-auto'>
+        <div className='xl:w-9/12 mx-auto'>
             <Banner></Banner>
+            <LatestTuitionPosts limit={6}></LatestTuitionPosts>
+            <LatestTutors limit={6}></LatestTutors>
+            <DemoUser></DemoUser>
             <ScrollButtons></ScrollButtons>
         </div>
     );

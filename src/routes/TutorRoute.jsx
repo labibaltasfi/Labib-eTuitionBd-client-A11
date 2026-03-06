@@ -12,7 +12,7 @@ const TutorRoute = ({children}) => {
         return <Loading></Loading>
     }
 
-    if (role !== 'tutor') {
+    if (role !== 'tutor' ) {
         return <Forbidden></Forbidden>
     }
 
