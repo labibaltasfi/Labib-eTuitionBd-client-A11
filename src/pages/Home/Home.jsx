@@ -10,7 +10,7 @@ function Home() {
         <div className='xl:w-9/12 mx-auto'>
             <Banner></Banner>
             <LatestTuitionPosts limit={6}></LatestTuitionPosts>
-            <LatestTutors limit={6}></LatestTutors>
+            <LatestTutors></LatestTutors>
             <DemoUser></DemoUser>
             <ScrollButtons></ScrollButtons>
         </div>
