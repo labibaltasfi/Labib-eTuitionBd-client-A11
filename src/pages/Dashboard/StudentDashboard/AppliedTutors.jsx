@@ -85,7 +85,7 @@ const AppliedTutors = () => {
 
     return (
         <div className="p-6 max-w-6xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6 text-center">Applied Tutors</h1>
+            <h1 className="text-center font-bold text-4xl py-10">Applied Tutors</h1>
 
             {tuitions.map(({ tuition, applications }) => (
                 <div

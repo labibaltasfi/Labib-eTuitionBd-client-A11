@@ -6,7 +6,7 @@ const UserDetails = () => {
     console.log(user)
     return (
       <div>
-        <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8 py-10'>User Details</h1>
+                <h1 className='text-center font-bold text-4xl py-10'>User Details</h1>
           <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
 
             <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-[#192489] shadow-md mb-4">

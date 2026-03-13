@@ -5,7 +5,7 @@ const About = () => {
     <div className="max-w-6xl mx-auto px-4 py-16">
       {/* Header */}
       <div className="text-center mb-14">
-        <h1 className="text-4xl font-bold mb-4">About eTutionbd</h1>
+        <h1 className="text-center font-bold text-4xl py-10">About eTutionbd</h1>
         <p className="text-gray-600 max-w-3xl mx-auto">
           eTutionbd is a modern tuition management platform designed to connect
           students and tutors through a single, easy-to-use system.

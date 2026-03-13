@@ -30,6 +30,7 @@ import TuitionList from "../pages/Tuitions/TuitionList";
 import DemoUser from "../pages/Home/DemoUser";
 import About from "../pages/Home/About";
 import Contact from "../pages/Home/Contact";
+import Profile from "../pages/Profile/Profile";
 
 
 
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
        {
         path: 'tutor-ongoing-tuitions',
          element: <PrivateRoute><TutorOngoingTuitions></TutorOngoingTuitions></PrivateRoute>
+      },
+      {
+        path: 'profile',
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       },
        {
         path: "/*",
@@ -149,6 +154,10 @@ export const router = createBrowserRouter([
        {
         path: 'revenue-history',
         element: <TutorRoute><RevenueHistory></RevenueHistory></TutorRoute>
+      },
+       {
+        path: 'profile',
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       },
     ]
   }
