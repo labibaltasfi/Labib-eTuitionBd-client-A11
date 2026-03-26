@@ -2,79 +2,104 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-16">
-      {/* Header */}
-      <div className="text-center mb-14">
-        <h1 className="text-center font-bold text-4xl py-10">About eTutionbd</h1>
-        <p className="text-gray-600 max-w-3xl mx-auto">
-          eTutionbd is a modern tuition management platform designed to connect
-          students and tutors through a single, easy-to-use system.
-        </p>
-      </div>
+    <section className="relative overflow-hidden bg-linear-to-b from-cyan-50 via-emerald-50 to-amber-50 py-16 sm:py-20">
+      <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-cyan-300/30 blur-3xl" />
+      <div className="pointer-events-none absolute top-10 -right-20 h-72 w-72 rounded-full bg-emerald-300/30 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-amber-300/30 blur-3xl" />
 
-      {/* Content Section */}
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        {/* Text */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">
-            A Complete Tuition Management Solution
-          </h2>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            eTutionbd simplifies the process of finding and managing tuition.
-            Students can post tuition requirements, while tutors can browse
-            available tuitions and apply directly through the platform.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            Our goal is to create a transparent and efficient system where
-            students find the right tutors and tutors get access to genuine
-            tuition opportunities — all in one place.
+      <div className="relative mx-auto max-w-6xl px-4">
+        <div className="mb-12 text-center">
+          <span className="inline-flex items-center rounded-full bg-white/70 px-4 py-1 text-sm font-semibold text-emerald-700 shadow-sm ring-1 ring-emerald-200 backdrop-blur">
+            Connecting Learners & Teachers Across Bangladesh
+          </span>
+          <h1 className="mt-5 text-4xl font-extrabold text-slate-800 sm:text-5xl">
+            About eTuitionBD
+          </h1>
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            eTuitionBD is a colorful, modern tuition platform where students and
+            tutors meet, connect, and move forward together through a simple and
+            trusted experience.
           </p>
         </div>
 
-        {/* Features */}
-        <div className="grid gap-6">
-          <div className="card bg-base-100 shadow-md">
-            <div className="card-body">
-              <h3 className="font-semibold text-lg">For Students</h3>
-              <p className="text-gray-600">
-                Post tuition needs, review tutor applications, and select the
-                best tutor with ease.
-              </p>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="rounded-3xl bg-white/80 p-6 shadow-xl ring-1 ring-white/70 backdrop-blur sm:p-8">
+            <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
+              Why We Built This Platform
+            </h2>
+            <p className="mt-4 leading-relaxed text-slate-600">
+              Finding quality tuition should not be stressful. eTuitionBD helps
+              students post requirements quickly and allows tutors to discover
+              genuine opportunities in minutes.
+            </p>
+            <p className="mt-3 leading-relaxed text-slate-600">
+              From applying to managing ongoing tuition and payment tracking, the
+              entire process lives in one secure dashboard.
+            </p>
+
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <div className="rounded-2xl bg-cyan-100 p-4 text-center">
+                <p className="text-2xl font-extrabold text-cyan-700">Fast</p>
+                <p className="text-sm text-cyan-900">Quick tutor matching</p>
+              </div>
+              <div className="rounded-2xl bg-emerald-100 p-4 text-center">
+                <p className="text-2xl font-extrabold text-emerald-700">Safe</p>
+                <p className="text-sm text-emerald-900">Secure accounts</p>
+              </div>
+              <div className="rounded-2xl bg-amber-100 p-4 text-center">
+                <p className="text-2xl font-extrabold text-amber-700">Clear</p>
+                <p className="text-sm text-amber-900">Transparent process</p>
+              </div>
+              <div className="rounded-2xl bg-rose-100 p-4 text-center">
+                <p className="text-2xl font-extrabold text-rose-700">Smart</p>
+                <p className="text-sm text-rose-900">Role-based workflow</p>
+              </div>
             </div>
           </div>
 
-          <div className="card bg-base-100 shadow-md">
-            <div className="card-body">
-              <h3 className="font-semibold text-lg">For Tutors</h3>
-              <p className="text-gray-600">
-                Find suitable tuition opportunities, apply instantly, and grow
-                your teaching career.
-              </p>
-            </div>
-          </div>
+          <div className="grid gap-5">
+            <article className="rounded-3xl bg-linear-to-r from-cyan-500 to-blue-500 p-px shadow-lg">
+              <div className="rounded-3xl bg-white p-6">
+                <h3 className="text-lg font-bold text-slate-800">For Students</h3>
+                <p className="mt-2 text-slate-600">
+                  Post tuition needs, compare applications, and choose the best
+                  tutor confidently.
+                </p>
+              </div>
+            </article>
 
-          <div className="card bg-base-100 shadow-md">
-            <div className="card-body">
-              <h3 className="font-semibold text-lg">Secure & Reliable</h3>
-              <p className="text-gray-600">
-                A trusted system with role-based access, secure authentication,
-                and smooth communication.
-              </p>
-            </div>
+            <article className="rounded-3xl bg-linear-to-r from-emerald-500 to-lime-500 p-px shadow-lg">
+              <div className="rounded-3xl bg-white p-6">
+                <h3 className="text-lg font-bold text-slate-800">For Tutors</h3>
+                <p className="mt-2 text-slate-600">
+                  Browse verified tuition posts, apply quickly, and build a
+                  sustainable teaching journey.
+                </p>
+              </div>
+            </article>
+
+            <article className="rounded-3xl bg-linear-to-r from-fuchsia-500 to-rose-500 p-px shadow-lg">
+              <div className="rounded-3xl bg-white p-6">
+                <h3 className="text-lg font-bold text-slate-800">Trusted System</h3>
+                <p className="mt-2 text-slate-600">
+                  Reliable authentication, clean dashboards, and smooth progress
+                  from application to payment.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
-      </div>
 
-      {/* Mission */}
-      <div className="mt-20 text-center">
-        <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-        <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed">
-          Our mission is to bridge the gap between students and tutors by
-          providing a reliable, efficient, and user-friendly tuition management
-          platform that benefits everyone.
-        </p>
+        <div className="mt-14 rounded-3xl bg-slate-900 px-6 py-10 text-center text-white shadow-2xl sm:px-10">
+          <h2 className="text-2xl font-bold sm:text-3xl">Our Mission</h2>
+          <p className="mx-auto mt-4 max-w-4xl leading-relaxed text-slate-200">
+            We are on a mission to make tuition easier, safer, and more
+            transparent for every student and tutor by building a platform that
+            values trust, speed, and real educational impact.
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

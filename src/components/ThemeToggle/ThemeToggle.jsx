@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
 
   useEffect(() => {
-    document.querySelector("html").setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
@@ -29,7 +30,7 @@ const ThemeToggle = () => {
     type="checkbox"
     className="input"
     checked={theme === "dark"}
-    onChange={() => setTheme(theme === "light" ? "dark" : "light")}
+    onChange={() => setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))}
   />
 
   <span className="slider"></span>

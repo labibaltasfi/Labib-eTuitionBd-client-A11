@@ -6,6 +6,18 @@
   font-optical-sizing: auto;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: hsl(var(--b1));
+  color: hsl(var(--bc));
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
 
 /* theme toggle  */
 /* From Uiverse.io by andrew-demchenk0 */ 
