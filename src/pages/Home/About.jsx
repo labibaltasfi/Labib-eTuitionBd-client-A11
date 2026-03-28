@@ -2,20 +2,20 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-cyan-50 via-emerald-50 to-amber-50 py-16 sm:py-20">
-      <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-cyan-300/30 blur-3xl" />
-      <div className="pointer-events-none absolute top-10 -right-20 h-72 w-72 rounded-full bg-emerald-300/30 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-amber-300/30 blur-3xl" />
+    <section className="relative overflow-hidden bg-linear-to-b from-cyan-50 via-emerald-50 to-amber-50 py-16 sm:py-20 in-data-[theme=dark]:from-[#050505] in-data-[theme=dark]:via-[#0b0b0c] in-data-[theme=dark]:to-[#111113]">
+      <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-cyan-300/30 blur-3xl dark:bg-cyan-500/20" />
+      <div className="pointer-events-none absolute top-10 -right-20 h-72 w-72 rounded-full bg-emerald-300/30 blur-3xl dark:bg-emerald-500/15" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-amber-300/30 blur-3xl dark:bg-amber-500/15" />
 
       <div className="relative mx-auto max-w-6xl px-4">
         <div className="mb-12 text-center">
-          <span className="inline-flex items-center rounded-full bg-white/70 px-4 py-1 text-sm font-semibold text-emerald-700 shadow-sm ring-1 ring-emerald-200 backdrop-blur">
+          <span className="inline-flex items-center rounded-full bg-white/70 px-4 py-1 text-sm font-semibold text-emerald-700 shadow-sm ring-1 ring-emerald-200 backdrop-blur dark:bg-slate-800/80 dark:text-emerald-300 dark:ring-slate-700">
             Connecting Learners & Teachers Across Bangladesh
           </span>
-          <h1 className="mt-5 text-4xl font-extrabold text-slate-800 sm:text-5xl">
+          <h1 className="mt-5 text-4xl font-extrabold text-slate-800 sm:text-5xl in-data-[theme=dark]:text-white">
             About eTuitionBD
           </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
             eTuitionBD is a colorful, modern tuition platform where students and
             tutors meet, connect, and move forward together through a simple and
             trusted experience.
@@ -23,45 +23,45 @@ const About = () => {
         </div>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="rounded-3xl bg-white/80 p-6 shadow-xl ring-1 ring-white/70 backdrop-blur sm:p-8">
-            <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl">
+          <div className="rounded-3xl bg-white/80 p-6 shadow-xl ring-1 ring-white/70 backdrop-blur sm:p-8 dark:bg-slate-800/80 dark:ring-slate-700">
+            <h2 className="text-2xl font-bold text-slate-800 sm:text-3xl dark:text-slate-100">
               Why We Built This Platform
             </h2>
-            <p className="mt-4 leading-relaxed text-slate-600">
+            <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               Finding quality tuition should not be stressful. eTuitionBD helps
               students post requirements quickly and allows tutors to discover
               genuine opportunities in minutes.
             </p>
-            <p className="mt-3 leading-relaxed text-slate-600">
+            <p className="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">
               From applying to managing ongoing tuition and payment tracking, the
               entire process lives in one secure dashboard.
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-4">
-              <div className="rounded-2xl bg-cyan-100 p-4 text-center">
+              <div className="rounded-2xl bg-cyan-100 p-4 text-center dark:bg-cyan-500/20">
                 <p className="text-2xl font-extrabold text-cyan-700">Fast</p>
-                <p className="text-sm text-cyan-900">Quick tutor matching</p>
+                <p className="text-sm text-cyan-900 dark:text-cyan-200">Quick tutor matching</p>
               </div>
-              <div className="rounded-2xl bg-emerald-100 p-4 text-center">
+              <div className="rounded-2xl bg-emerald-100 p-4 text-center dark:bg-emerald-500/20">
                 <p className="text-2xl font-extrabold text-emerald-700">Safe</p>
-                <p className="text-sm text-emerald-900">Secure accounts</p>
+                <p className="text-sm text-emerald-900 dark:text-emerald-200">Secure accounts</p>
               </div>
-              <div className="rounded-2xl bg-amber-100 p-4 text-center">
+              <div className="rounded-2xl bg-amber-100 p-4 text-center dark:bg-amber-500/20">
                 <p className="text-2xl font-extrabold text-amber-700">Clear</p>
-                <p className="text-sm text-amber-900">Transparent process</p>
+                <p className="text-sm text-amber-900 dark:text-amber-200">Transparent process</p>
               </div>
-              <div className="rounded-2xl bg-rose-100 p-4 text-center">
+              <div className="rounded-2xl bg-rose-100 p-4 text-center dark:bg-rose-500/20">
                 <p className="text-2xl font-extrabold text-rose-700">Smart</p>
-                <p className="text-sm text-rose-900">Role-based workflow</p>
+                <p className="text-sm text-rose-900 dark:text-rose-200">Role-based workflow</p>
               </div>
             </div>
           </div>
 
           <div className="grid gap-5">
             <article className="rounded-3xl bg-linear-to-r from-cyan-500 to-blue-500 p-px shadow-lg">
-              <div className="rounded-3xl bg-white p-6">
-                <h3 className="text-lg font-bold text-slate-800">For Students</h3>
-                <p className="mt-2 text-slate-600">
+              <div className="rounded-3xl bg-white p-6 dark:bg-slate-800">
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">For Students</h3>
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
                   Post tuition needs, compare applications, and choose the best
                   tutor confidently.
                 </p>
@@ -69,9 +69,9 @@ const About = () => {
             </article>
 
             <article className="rounded-3xl bg-linear-to-r from-emerald-500 to-lime-500 p-px shadow-lg">
-              <div className="rounded-3xl bg-white p-6">
-                <h3 className="text-lg font-bold text-slate-800">For Tutors</h3>
-                <p className="mt-2 text-slate-600">
+              <div className="rounded-3xl bg-white p-6 dark:bg-slate-800">
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">For Tutors</h3>
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
                   Browse verified tuition posts, apply quickly, and build a
                   sustainable teaching journey.
                 </p>
@@ -79,9 +79,9 @@ const About = () => {
             </article>
 
             <article className="rounded-3xl bg-linear-to-r from-fuchsia-500 to-rose-500 p-px shadow-lg">
-              <div className="rounded-3xl bg-white p-6">
-                <h3 className="text-lg font-bold text-slate-800">Trusted System</h3>
-                <p className="mt-2 text-slate-600">
+              <div className="rounded-3xl bg-white p-6 dark:bg-slate-800">
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Trusted System</h3>
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
                   Reliable authentication, clean dashboards, and smooth progress
                   from application to payment.
                 </p>

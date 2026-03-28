@@ -36,7 +36,7 @@ const DemoUser = () => {
 
         queryClient.invalidateQueries(['demo-user']);
       }
-    } catch (error) {
+    } catch {
       Swal.fire({
         icon: 'error',
         title: 'Failed',
@@ -66,7 +66,7 @@ const DemoUser = () => {
             />
             <div>
               <h2 className="text-2xl font-bold">{user.displayName}</h2>
-              <p className="text-gray-500">{user.email}</p>
+              <p className="text-base-content/70">{user.email}</p>
               <span className="badge badge-primary mt-2">{user.role}</span>
             </div>
           </div>
@@ -88,7 +88,7 @@ const DemoUser = () => {
                   <select
                     value={user.role}
                     onChange={(e) => handleRoleChange(e.target.value)}
-                    className="border rounded-lg p-2 bg-white text-black"
+                    className="border rounded-lg p-2 bg-base-200 text-base-content border-base-content/20"
                   >
                     <option value="student">Student</option>
                     <option value="tutor">Tutor</option>

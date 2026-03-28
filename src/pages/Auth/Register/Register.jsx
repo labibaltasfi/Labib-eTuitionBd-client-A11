@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const {
@@ -69,7 +70,7 @@ const Register = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center px-4 py-10">
-            <div className="card bg-white text-gray-800 py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-3xl shadow-2xl">
+            <div className="card bg-base-200 text-base-content py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-3xl shadow-2xl transition-colors duration-300">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8">
                     Register your account
                 </h2>
@@ -86,7 +87,7 @@ const Register = () => {
                                 type="text"
                                 placeholder="Your Name"
                                 {...register("name", { required: true })}
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                                className="p-3 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
                             />
                             {errors.name && (
                                 <p className="text-red-500 text-sm">Name is required</p>
@@ -100,7 +101,7 @@ const Register = () => {
                                 type="email"
                                 placeholder="Email"
                                 {...register("email", { required: true })}
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                                className="p-3 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
                             />
                             {errors.email && (
                                 <p className="text-red-500 text-sm">Email is required</p>
@@ -119,7 +120,7 @@ const Register = () => {
                                     pattern:
                                         /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/,
                                 })}
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                                className="p-3 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
                             />
                             {errors.password?.type === "required" && (
                                 <p className="text-red-500 text-sm">Password is required</p>
@@ -143,7 +144,7 @@ const Register = () => {
                             <input
                                 type="file"
                                 {...register("photo", { required: true })}
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#192489] file:text-white hover:file:bg-[#141d6f]" />
+                                className="p-3 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-primary-content hover:file:brightness-110" />
                             {errors.photo && (
                                 <p className="text-red-500 text-sm">Photo is required</p>
                             )}
@@ -155,7 +156,7 @@ const Register = () => {
                             <select
                                 {...register("role", { required: true })}
                                 defaultValue=""
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                                className="p-3 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
                             >
                                 <option value="" disabled>
                                     Select Role
@@ -178,7 +179,7 @@ const Register = () => {
                                     required: true,
                                     pattern: /^01[3-9]\d{8}$/,
                                 })}
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                                className="p-3 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
                             />
                             {errors.mobile?.type === "required" && (
                                 <p className="text-red-500 text-sm">
@@ -195,16 +196,16 @@ const Register = () => {
                         {/* Submit */}
                         <button
                             type="submit"
-                            className="w-full py-3 rounded-xl bg-[#192489] text-white font-semibold hover:bg-[#141d6f] transition"
+                            className="w-full py-3 rounded-xl bg-primary text-primary-content font-semibold hover:brightness-110 transition"
                         >
                             Register
                         </button>
                     </fieldset>
                 </form>
 
-                <p className="pt-4 text-center text-gray-600">
+                <p className="pt-4 text-center text-base-content/75">
                     Already have an account?
-                    <Link to="/login" className="text-[#192489] font-semibold ml-1">
+                    <Link to="/login" className="text-primary font-semibold ml-1">
                         Login
                     </Link>
                 </p>

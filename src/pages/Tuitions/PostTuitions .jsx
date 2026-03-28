@@ -82,8 +82,8 @@ const PostTuitions = () => {
 
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-gray-50">
-            <div className="card bg-white text-gray-800 py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-3xl shadow-2xl">
+        <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-base-100 text-base-content transition-colors duration-300">
+            <div className="card bg-base-200 text-base-content py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-3xl shadow-2xl transition-colors duration-300">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8">
                     Post Tuitions
                 </h2>
@@ -96,7 +96,7 @@ const PostTuitions = () => {
                         <select
                             {...register("NameOfclass", { required: "Class is required" })}
                             defaultValue=""
-                            className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489] bg-white"
+                            className="p-3 rounded-xl border border-primary/40 focus:ring-2 focus:ring-primary bg-base-100"
                         >
                             <option disabled value="">Select Class</option>
                             {NameOfclass.map((word, index) => (
@@ -113,7 +113,7 @@ const PostTuitions = () => {
                             type="text"
                             {...register("subjectName", { required: "Subject is required" })}
                             placeholder="e.g. Mathematics"
-                            className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                            className="p-3 rounded-xl border border-primary/40 focus:ring-2 focus:ring-primary bg-base-100"
                         />
                         {errors.subjectName && <p className="text-red-500 text-sm mt-1">{errors.subjectName.message}</p>}
                     </div>
@@ -128,7 +128,7 @@ const PostTuitions = () => {
                                 min: { value: 1, message: "Budget must be at least 1" },
                             })}
                             placeholder="Amount"
-                            className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                            className="p-3 rounded-xl border border-primary/40 focus:ring-2 focus:ring-primary bg-base-100"
                         />
                         {errors.budget && <p className="text-red-500 text-sm mt-1">{errors.budget.message}</p>}
                     </div>
@@ -141,7 +141,7 @@ const PostTuitions = () => {
                             <select
                                 {...register("tuitionRegion", { required: "Region is required" })}
                                 defaultValue=""
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489] bg-white"
+                                className="p-3 rounded-xl border border-primary/40 focus:ring-2 focus:ring-primary bg-base-100"
                             >
                                 <option disabled value="">Pick a region</option>
                                 {regions.map((r, i) => <option key={i} value={r}>{r}</option>)}
@@ -155,7 +155,7 @@ const PostTuitions = () => {
                             <select
                                 {...register("tuitionDistrict", { required: "District is required" })}
                                 defaultValue=""
-                                className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489] bg-white"
+                                className="p-3 rounded-xl border border-primary/40 focus:ring-2 focus:ring-primary bg-base-100"
                             >
                                 <option disabled value="">Pick a district</option>
                                 {tuitionRegion && districtsByRegion(tuitionRegion).map((d, i) => <option key={i} value={d}>{d}</option>)}
@@ -171,7 +171,7 @@ const PostTuitions = () => {
                             type="text"
                             {...register("streetAddress", { required: "Street address is required" })}
                             placeholder="Subdistrict, Village, Road no, House no"
-                            className="p-3 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+                            className="p-3 rounded-xl border border-primary/40 focus:ring-2 focus:ring-primary bg-base-100"
                         />
                         {errors.streetAddress && <p className="text-red-500 text-sm mt-1">{errors.streetAddress.message}</p>}
                     </div>
@@ -184,7 +184,7 @@ const PostTuitions = () => {
                             {...register("studentName")}
                             value={user?.displayName}
                             readOnly
-                            className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
+                            className="p-3 rounded-xl border border-base-content/20 bg-base-100 cursor-not-allowed opacity-70"
                         />
                     </div>
 
@@ -195,19 +195,19 @@ const PostTuitions = () => {
                             {...register("studentEmail")}
                             value={user?.email}
                             readOnly
-                            className="p-3 rounded-xl border border-gray-300 bg-gray-100 cursor-not-allowed opacity-70"
+                            className="p-3 rounded-xl border border-base-content/20 bg-base-100 cursor-not-allowed opacity-70"
                         />
                     </div>
 
                     {/* Schedule */}
                     <label className="mb-1 font-medium">Schedule</label>
-                    <div className="p-5 rounded-2xl bg-blue-50 border border-blue-100">
+                    <div className="p-5 rounded-2xl bg-base-100 border border-base-content/10">
                         <div className="flex flex-col mb-4">
-                            <label className="mb-2 font-bold text-[#192489]">Select Tuition Hour</label>
+                            <label className="mb-2 font-bold text-primary">Select Tuition Hour</label>
                             <select
                                 {...register("selectedHour", { required: "Hour is required" })}
                                 defaultValue=""
-                                className="p-3 rounded-xl border border-[#192489] font-bold"
+                                className="p-3 rounded-xl border border-primary/40 font-bold bg-base-100"
                             >
                                 <option disabled value="">Pick a time</option>
                                 {allHours.map((hour, index) => <option key={index} value={hour}>{hour}</option>)}
@@ -215,7 +215,7 @@ const PostTuitions = () => {
                             {errors.selectedHour && <p className="text-red-500 text-sm mt-1">{errors.selectedHour.message}</p>}
                         </div>
 
-                        <label className="mb-2 block font-bold text-[#192489]">Select Days</label>
+                        <label className="mb-2 block font-bold text-primary">Select Days</label>
                         <div className="flex flex-wrap gap-2">
                             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day, index) => (
                                 <label key={index} className="cursor-pointer group">
@@ -225,7 +225,7 @@ const PostTuitions = () => {
                                         {...register("selectedDays", { required: "Select at least one day" })}
                                         className="hidden peer"
                                     />
-                                    <div className="w-12 h-10 border-2 border-[#192489] rounded-lg flex items-center justify-center font-bold transition-all peer-checked:bg-[#192489] peer-checked:text-white group-hover:scale-105">
+                                    <div className="w-12 h-10 border-2 border-primary rounded-lg flex items-center justify-center font-bold transition-all peer-checked:bg-primary peer-checked:text-primary-content group-hover:scale-105">
                                         {day}
                                     </div>
                                 </label>
@@ -234,7 +234,7 @@ const PostTuitions = () => {
 
                         {/* Selected Days Preview */}
                         {watchedDays.length > 0 && (
-                            <div className="mt-3 text-xs font-semibold text-blue-700 italic">
+                            <div className="mt-3 text-xs font-semibold text-primary italic">
                                 Selected: {watchedDays.join(', ')} ({watchedDays.length} days/week)
                             </div>
                         )}
@@ -244,7 +244,7 @@ const PostTuitions = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full py-4 rounded-xl bg-[#192489] text-white font-bold text-lg hover:bg-[#141d6f] transition shadow-lg"
+                        className="w-full py-4 rounded-xl bg-primary text-primary-content font-bold text-lg hover:brightness-110 transition shadow-lg"
                     >
                         Post Tuition
                     </button>

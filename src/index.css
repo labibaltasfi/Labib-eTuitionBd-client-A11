@@ -18,6 +18,41 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* Dark mode compatibility layer for existing hardcoded utility classes */
+[data-theme="dark"] .bg-white {
+  background-color: hsl(var(--b2)) !important;
+}
+
+[data-theme="dark"] .bg-gray-50,
+[data-theme="dark"] .bg-gray-100 {
+  background-color: hsl(var(--b1)) !important;
+}
+
+[data-theme="dark"] .text-black,
+[data-theme="dark"] .text-gray-800,
+[data-theme="dark"] .text-gray-700 {
+  color: hsl(var(--bc)) !important;
+}
+
+[data-theme="dark"] .text-gray-600,
+[data-theme="dark"] .text-gray-500,
+[data-theme="dark"] .text-gray-400 {
+  color: hsl(var(--bc) / 0.75) !important;
+}
+
+[data-theme="dark"] .border-gray-300,
+[data-theme="dark"] .border-gray-200,
+[data-theme="dark"] .border-gray-100 {
+  border-color: hsl(var(--bc) / 0.18) !important;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: hsl(var(--b2));
+  color: hsl(var(--bc));
+}
+
 
 /* theme toggle  */
 /* From Uiverse.io by andrew-demchenk0 */ 

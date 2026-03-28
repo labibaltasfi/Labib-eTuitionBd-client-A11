@@ -31,7 +31,7 @@ const Login = () => {
     };
 
     try {
-      const res = await signIn(demoUser.email, demoUser.password);
+      await signIn(demoUser.email, demoUser.password);
       navigate("/demo-user");
     } catch (error) {
       console.error(error);
@@ -45,7 +45,7 @@ const Login = () => {
       <ToastContainer />
       <title>Login</title>
 
-      <div className="card bg-white text-gray-800 py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-3xl shadow-2xl">
+      <div className="card bg-base-200 text-base-content py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-3xl shadow-2xl transition-colors duration-300">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8">
           Login to your account
         </h2>
@@ -61,7 +61,7 @@ const Login = () => {
               type="email"
               placeholder="Email"
               {...register("email", { required: true })}
-              className="p-3 sm:p-4 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+              className="p-3 sm:p-4 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
             />
             {errors.email && (
               <p className="text-red-500 text-sm">Email is required</p>
@@ -75,7 +75,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               {...register("password", { required: true })}
-              className="p-3 sm:p-4 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+              className="p-3 sm:p-4 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
             />
             {errors.password && (
               <p className="text-red-500 text-sm">Password is required</p>
@@ -86,7 +86,7 @@ const Login = () => {
           <div className="text-right">
             <Link
               to="/forgetPassword"
-              className="text-[#192489] hover:underline text-sm"
+              className="text-primary hover:underline text-sm"
             >
               Forgot password?
             </Link>
@@ -95,7 +95,7 @@ const Login = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full cursor-pointer py-3 sm:py-4 rounded-xl bg-[#192489] text-white font-semibold hover:bg-[#141d6f] transition"
+            className="w-full cursor-pointer py-3 sm:py-4 rounded-xl bg-primary text-primary-content font-semibold hover:brightness-110 transition"
           >
             Login
           </button>
@@ -103,9 +103,9 @@ const Login = () => {
 
         {/* Divider */}
         <div className="flex items-center my-6">
-          <hr className="flex-grow border-gray-300" />
-          <span className="px-2 text-gray-500">OR</span>
-          <hr className="flex-grow border-gray-300" />
+          <hr className="grow border-gray-300" />
+          <span className="px-2 text-base-content/70">OR</span>
+          <hr className="grow border-gray-300" />
         </div>
 
         {/* Google Login */}
@@ -119,11 +119,11 @@ const Login = () => {
         </button>
 
         {/* Register link */}
-        <p className="pt-4 sm:pt-6 text-center text-gray-600">
+        <p className="pt-4 sm:pt-6 text-center text-base-content/75">
           Don’t have an account?
           <Link
             to="/register"
-            className="text-[#192489] font-semibold hover:underline ml-1"
+            className="text-primary font-semibold hover:underline ml-1"
           >
             Register
           </Link>

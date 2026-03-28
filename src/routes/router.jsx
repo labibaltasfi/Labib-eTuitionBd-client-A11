@@ -3,7 +3,6 @@ import RootLayout from "../layouts/RootLayout";
 import Register from "../pages/Auth/Register/Register";
 import Login from "../pages/Auth/Login/Login";
 import PostTuitions from "../pages/Tuitions/PostTuitions ";
-import tuitionList from "../pages/Tuitions/TuitionList";
 import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
@@ -24,9 +23,10 @@ import StudentRoute from "./StudentRoute";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import TutorRoute from "./TutorRoute";
+import AdminTutorRoute from "./AdminTutorRoute";
 import TutorOngoingTuitions from "../pages/Dashboard/TutorDashboard/TutorOngoingTuitions";
 import RevenueHistory from "../pages/Dashboard/TutorDashboard/RevenueHistory";
-import TuitionList from "../pages/Tuitions/TuitionList";
+import TuitionList from "../pages/Tuitions/tuitionList";
 import DemoUser from "../pages/Home/DemoUser";
 import About from "../pages/Home/About";
 import Contact from "../pages/Home/Contact";
@@ -51,6 +51,16 @@ export const router = createBrowserRouter([
       {
         path: 'login',
         Component: Login
+      },
+      {
+        path: "tuition-list",
+        element: (
+          <PrivateRoute>
+            <AdminTutorRoute>
+              <TuitionList></TuitionList>
+            </AdminTutorRoute>
+          </PrivateRoute>
+        ),
       },
        {
         path: "tuition-details/:id",
@@ -121,7 +131,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'tuitionlist',
-         element: <StudentRoute><TuitionList></TuitionList></StudentRoute>
+        element: <AdminTutorRoute><TuitionList></TuitionList></AdminTutorRoute>
       },
       {
         path: 'tutor-ongoing-tuitions',

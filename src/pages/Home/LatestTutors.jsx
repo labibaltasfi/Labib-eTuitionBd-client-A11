@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import useAxios from '../../hooks/useAxios';
 import { FaEnvelope, FaPhone, FaStar, FaUserGraduate, FaArrowRight } from 'react-icons/fa';
@@ -7,6 +6,12 @@ import { useNavigate } from 'react-router';
 const LatestTutors = ({ limit = 6 }) => {
   const axiosInstance = useAxios();
   const navigate = useNavigate();
+
+  const palette = [
+    { bar: 'from-secondary to-accent', chip: 'badge-secondary' },
+    { bar: 'from-primary to-info', chip: 'badge-primary' },
+    { bar: 'from-accent to-warning', chip: 'badge-accent' },
+  ];
   
   const { data: tutors = [], isLoading, isError, error } = useQuery({
     queryKey: ['latest-tutors', limit],
@@ -22,28 +27,11 @@ const LatestTutors = ({ limit = 6 }) => {
     staleTime: 5 * 60 * 1000,
   });
   
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-    }
-  };
-  
-  const cardVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-  
   if (isLoading) {
     return (
       <section className="py-16 px-4 bg-base-100">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold text-center mb-4 bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
             Latest Tutors
           </h2>
           <div className="text-center text-lg opacity-70">Loading tutors...</div>
@@ -57,7 +45,7 @@ const LatestTutors = ({ limit = 6 }) => {
     return (
       <section className="py-16 px-4 bg-base-100">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold text-center mb-4 bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
             Latest Tutors
           </h2>
           <div className="text-center text-error text-lg">Failed to load tutors. Please try again later.</div>
@@ -70,7 +58,7 @@ const LatestTutors = ({ limit = 6 }) => {
     return (
       <section className="py-16 px-4 bg-base-100">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold text-center mb-4 bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
             Latest Tutors
           </h2>
           <div className="text-center text-lg opacity-70">No tutors available at the moment.</div>
@@ -83,91 +71,91 @@ const LatestTutors = ({ limit = 6 }) => {
     <section className="py-16 px-4 bg-base-100">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+          <div>
+            <h2 className="text-5xl font-bold mb-4 bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
               Latest Tutors
             </h2>
             <p className="text-lg opacity-70 max-w-2xl mx-auto">
               Meet our newest qualified tutors ready to help you achieve your learning goals
             </p>
-          </motion.div>
+          </div>
         </div>
         
-        <motion.div
-          className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tutors.map((tutor) => (
-            <motion.div
+            
+            <div
               key={tutor._id}
-              variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="card bg-base-100 shadow-2xl border border-base-300 overflow-hidden group hover:shadow-secondary/20"
+              className="rounded-3xl bg-base-100 shadow-xl border border-base-300/70 overflow-hidden group hover:shadow-secondary/20 transition-all"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-accent"></div>
-              
-              <figure className="px-8 pt-8">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
-                  <img 
-                    src={tutor.photoURL} 
-                    alt={tutor.displayName}
-                    className="rounded-full w-32 h-32 object-cover border-4 border-base-300 group-hover:border-secondary transition-colors relative z-10"
-                    loading="lazy"
-                  />
-                  <div className="absolute -bottom-2 -right-2 bg-secondary text-secondary-content rounded-full p-2 z-20">
-                    <FaUserGraduate className="text-xl" />
-                  </div>
-                </div>
-              </figure>
-              
-              <div className="card-body items-center text-center p-6">
-                <div className="badge badge-secondary badge-sm gap-1 mb-2">
-                  <FaStar className="text-xs" />
-                  New Tutor
-                </div>
-                
-                <h3 className="card-title text-2xl mb-3 group-hover:text-secondary transition-colors">
-                  {tutor.displayName}
-                </h3>
-                
-                <div className="space-y-2 w-full">
-                  <div className="flex items-center justify-center gap-2 text-sm opacity-80">
-                    <FaEnvelope className="text-secondary flex-shrink-0" />
-                    <span className="truncate">{tutor.email}</span>
-                  </div>
-                  
-                  {tutor.mobile && (
-                    <div className="flex items-center justify-center gap-2 text-sm opacity-80">
-                      <FaPhone className="text-accent flex-shrink-0" />
-                      <span>{tutor.mobile}</span>
+              <div className={`h-2 w-full bg-linear-to-r ${palette[tutor.displayName?.length % 3]?.bar || 'from-secondary to-accent'}`}></div>
+
+              <div className="p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-12 h-12 rounded-2xl bg-base-200 border border-base-300 overflow-hidden flex items-center justify-center font-bold text-lg">
+                      {tutor.photoURL ? (
+                        <img
+                          src={tutor.photoURL}
+                          alt={tutor.displayName || 'Tutor'}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span>{tutor.displayName?.charAt(0)?.toUpperCase() || 'T'}</span>
+                      )}
                     </div>
-                  )}
+                    <div className="min-w-0">
+                      <h3 className="text-xl font-bold truncate group-hover:text-secondary transition-colors">
+                        {tutor.displayName || 'Tutor'}
+                      </h3>
+                      <p className="text-sm opacity-70">Tutor Spotlight</p>
+                    </div>
+                  </div>
+
+                  <div className={`badge gap-1 ${palette[tutor.displayName?.length % 3]?.chip || 'badge-secondary'}`}>
+                    <FaStar className="text-xs" />
+                    New
+                  </div>
                 </div>
-                
-                <div className="card-actions justify-center mt-4 w-full">
-                  <button className="btn btn-secondary btn-sm btn-block gap-2 group-hover:gap-3 transition-all">
+
+                <div className="mt-5 space-y-3">
+                  <div className="rounded-xl bg-base-200/60 border border-base-300 px-3 py-2 flex items-center gap-2">
+                    <FaEnvelope className="text-secondary shrink-0" />
+                    <span className="text-sm truncate">{tutor.email}</span>
+                  </div>
+
+                  <div className="rounded-xl bg-base-200/60 border border-base-300 px-3 py-2 flex items-center gap-2">
+                    <FaPhone className="text-accent shrink-0" />
+                    <span className="text-sm">{tutor.mobile || 'Phone not added yet'}</span>
+                  </div>
+                </div>
+
+                <div className="mt-5 grid grid-cols-2 gap-2">
+                  <div className="rounded-xl border border-base-300 px-3 py-2 text-center">
+                    <p className="text-xs opacity-60 uppercase tracking-wide">Status</p>
+                    <p className="font-semibold">Available</p>
+                  </div>
+                  <div className="rounded-xl border border-base-300 px-3 py-2 text-center">
+                    <p className="text-xs opacity-60 uppercase tracking-wide">Type</p>
+                    <p className="font-semibold flex items-center justify-center gap-1">
+                      <FaUserGraduate className="text-sm" /> Tutor
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <button className="btn btn-secondary btn-sm w-full gap-2 group-hover:gap-3 transition-all">
                     View Profile
                     <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
         
-        <motion.div 
-          className="text-center mt-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
+        <div className="text-center mt-12">
           <button 
             onClick={() => navigate('/register')}
             className="btn btn-outline btn-secondary btn-lg gap-2"
@@ -175,7 +163,7 @@ const LatestTutors = ({ limit = 6 }) => {
             Become a Tutor
             <FaArrowRight />
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

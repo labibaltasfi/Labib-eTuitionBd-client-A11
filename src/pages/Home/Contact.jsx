@@ -7,13 +7,13 @@ const Contact = () => {
       <ToastContainer />
       <title>Contact Us</title>
 
-      <div className="card bg-white text-gray-800 py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-3xl shadow-2xl">
+      <div className="card bg-base-200 text-base-content py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl rounded-3xl shadow-2xl transition-colors duration-300">
         {/* Header */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8">
           Contact Us
         </h2>
 
-        <p className="text-center text-gray-600 mb-6">
+        <p className="text-center text-base-content/75 mb-6">
           Have questions or need support? Send us a message and we’ll get back to you.
         </p>
 
@@ -25,7 +25,7 @@ const Contact = () => {
             <input
               type="text"
               placeholder="Enter your name"
-              className="p-3 sm:p-4 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+              className="p-3 sm:p-4 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
               required
             />
           </div>
@@ -36,7 +36,7 @@ const Contact = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="p-3 sm:p-4 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+              className="p-3 sm:p-4 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
               required
             />
           </div>
@@ -47,7 +47,7 @@ const Contact = () => {
             <textarea
               rows="4"
               placeholder="Write your message..."
-              className="p-3 sm:p-4 rounded-xl border border-[#192489] focus:ring-2 focus:ring-[#192489]"
+              className="p-3 sm:p-4 rounded-xl border border-primary/40 bg-base-100 focus:ring-2 focus:ring-primary"
               required
             ></textarea>
           </div>
@@ -55,14 +55,14 @@ const Contact = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full cursor-pointer py-3 sm:py-4 rounded-xl bg-[#192489] text-white font-semibold hover:bg-[#141d6f] transition"
+            className="w-full cursor-pointer py-3 sm:py-4 rounded-xl bg-primary text-primary-content font-semibold hover:brightness-110 transition"
           >
             Send Message
           </button>
         </form>
 
         {/* Footer */}
-        <p className="pt-6 text-center text-gray-600">
+        <p className="pt-6 text-center text-base-content/75">
           We usually respond within 24 hours.
         </p>
       </div>

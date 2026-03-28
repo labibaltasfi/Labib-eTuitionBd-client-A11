@@ -21,7 +21,7 @@ const TuitionDetails = () => {
   } = useForm();
 
 
-  const { data: tuition = {}, isLoading, refetch } = useQuery({
+  const { data: tuition = {}, isLoading } = useQuery({
     queryKey: ["tuition-details", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/tuitionlist/${id}`);
@@ -71,17 +71,17 @@ const TuitionDetails = () => {
         reset();
         Swal.fire("Success", "Application submitted!", "success");
       }
-    } catch (error) {
+    } catch {
       document.getElementById("apply_modal").close();
       Swal.fire("Error", "You have already applied for this tuition post!", "error");
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100 p-4">
+    <div className="min-h-screen flex justify-center items-center bg-base-100 text-base-content p-4 transition-colors duration-300">
 
-      <div className="max-w-xl w-full bg-white rounded-3xl shadow-xl p-6 space-y-4 border">
-        <h2 className="text-3xl font-bold text-center text-[#192489]">
+      <div className="max-w-xl w-full bg-base-200 rounded-3xl shadow-xl p-6 space-y-4 border border-base-content/10 transition-colors duration-300">
+        <h2 className="text-3xl font-bold text-center text-primary">
           Tuition Details
         </h2>
 
@@ -113,7 +113,7 @@ const TuitionDetails = () => {
           ) : (
             <button
               onClick={() => document.getElementById("apply_modal").showModal()}
-              className="w-full mt-4 py-4 bg-[#192489] text-white rounded-xl font-bold hover:bg-[#141d6f] transition"
+              className="w-full mt-4 py-4 bg-primary text-primary-content rounded-xl font-bold hover:brightness-110 transition"
             >
               Apply for Tuition
             </button>
@@ -124,8 +124,8 @@ const TuitionDetails = () => {
 
 
       <dialog id="apply_modal" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box max-w-md bg-white rounded-2xl">
-          <h3 className="text-2xl font-bold mb-6 text-[#192489]">
+        <div className="modal-box max-w-md bg-base-200 text-base-content rounded-2xl border border-base-content/10">
+          <h3 className="text-2xl font-bold mb-6 text-primary">
             Apply for Tuition
           </h3>
 
@@ -139,7 +139,7 @@ const TuitionDetails = () => {
                 type="text"
                 value={user?.displayName || ""}
                 readOnly
-                className="w-full p-3 border rounded-lg bg-gray-100"
+                className="w-full p-3 border rounded-lg bg-base-100 border-base-content/20"
               />
             </div>
 
@@ -150,7 +150,7 @@ const TuitionDetails = () => {
                 type="email"
                 value={user?.email || ""}
                 readOnly
-                className="w-full p-3 border rounded-lg bg-gray-100"
+                className="w-full p-3 border rounded-lg bg-base-100 border-base-content/20"
               />
             </div>
 
@@ -162,7 +162,7 @@ const TuitionDetails = () => {
                   required: "Qualifications are required",
                 })}
                 placeholder="Your academic background"
-                className="w-full p-3 border rounded-lg"
+                className="w-full p-3 border rounded-lg bg-base-100 border-base-content/20"
               />
               {errors.qualifications && (
                 <p className="text-red-500 text-sm mt-1">
@@ -180,7 +180,7 @@ const TuitionDetails = () => {
                     required: "Experience is required",
                   })}
                   placeholder="e.g. 2 years"
-                  className="w-full p-3 border rounded-lg"
+                  className="w-full p-3 border rounded-lg bg-base-100 border-base-content/20"
                 />
                 {errors.experience && (
                   <p className="text-red-500 text-sm mt-1">
@@ -198,7 +198,7 @@ const TuitionDetails = () => {
                     min: { value: 1, message: "Invalid salary" },
                   })}
                   placeholder={`e.g. ${tuition?.budget || ""}`}
-                  className="w-full p-3 border rounded-lg"
+                  className="w-full p-3 border rounded-lg bg-base-100 border-base-content/20"
                 />
                 {errors.expectedSalary && (
                   <p className="text-red-500 text-sm mt-1">
@@ -213,7 +213,7 @@ const TuitionDetails = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 py-3 bg-[#192489] text-white rounded-xl font-bold disabled:opacity-50"
+                className="flex-1 py-3 bg-primary text-primary-content rounded-xl font-bold disabled:opacity-50"
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
               </button>

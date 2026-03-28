@@ -6,11 +6,11 @@ import logo from "../../../assets/open-book.png"
 
 const Footer = () => {
     return (
-        <footer className="bg-[#151B72] text-gray-300 py-6 pt-12">
+        <footer className="bg-base-300 text-base-content/80 py-6 pt-12 transition-colors duration-300">
             <div className="py-5 md:w-9/12 mx-auto">
                 <div className="grid lg:grid-cols-5 grid-cols-3  mb-20 ">
                     <div className="lg:col-span-2 col-span-3">
-                        <h2 className="font-extrabold text-4xl flex text-white items-center pb-5">
+                        <h2 className="font-extrabold text-4xl flex text-base-content items-center pb-5">
                             <img className="h-15 w-15 mr-2" src={logo} alt="" />
                             eTutionbd
                         </h2>
@@ -21,7 +21,7 @@ const Footer = () => {
 
 
                     <div className="flex flex-col  gap-4 ">
-                        <h3 className="text-white font-semibold mb-4">Follow Us</h3>
+                        <h3 className="text-base-content font-semibold mb-4">Follow Us</h3>
                         <a
                             href="https://facebook.com"
                             target="_blank"
@@ -58,7 +58,7 @@ const Footer = () => {
 
                     <div className="ml-5">
                         <div>
-                            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+                            <h3 className="text-base-content font-semibold mb-4">Quick Links</h3>
                             <ul className="space-y-2">
                                 <li>
                                     <Link to="/" className="hover:text-white transition">Home</Link>
@@ -72,7 +72,7 @@ const Footer = () => {
 
                     <div className="sm:col-span-1 sm:mt-0 col-span-3 mt-10">
                         <div>
-                            <h3 className="text-white font-semibold mb-4">Contact us</h3>
+                            <h3 className="text-base-content font-semibold mb-4">Contact us</h3>
                             <ul className="space-y-2">
                                 <li>
                                     <Link to="/" className="hover:text-white transition">+8809638398027</Link>

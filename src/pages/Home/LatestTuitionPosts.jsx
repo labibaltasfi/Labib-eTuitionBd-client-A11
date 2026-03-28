@@ -1,12 +1,39 @@
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 import useAxios from '../../hooks/useAxios';
 import { FaBook, FaMapMarkerAlt, FaGraduationCap, FaArrowRight } from 'react-icons/fa';
+import useAuth from '../../hooks/useAuth';
+import useRole from '../../hooks/useRole';
 
 const LatestTuitionPosts = ({ limit = 6 }) => {
   const axiosInstance = useAxios();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { role } = useRole();
+
+  const handleViewAllTuitions = () => {
+    if (role === 'admin' || role === 'tutor') {
+      navigate('/tuition-list');
+      return;
+    }
+
+    if (!user) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Login Required',
+        text: 'Please login as an approved tutor or admin to view all tuitions.',
+      });
+      return;
+    }
+
+    Swal.fire({
+      icon: 'warning',
+      title: 'Become a tutor first',
+      text: 'Apply and wait until the admin approves your request.',
+    });
+  };
   
   const { data: tuitions = [], isLoading, isError, error } = useQuery({
     queryKey: ['latest-tuitions', limit],
@@ -144,7 +171,7 @@ const LatestTuitionPosts = ({ limit = 6 }) => {
           transition={{ delay: 0.8 }}
         >
           <button 
-            onClick={() => navigate('/tuition-list')}
+            onClick={handleViewAllTuitions}
             className="btn btn-outline btn-primary btn-lg gap-2"
           >
             View All Tuitions

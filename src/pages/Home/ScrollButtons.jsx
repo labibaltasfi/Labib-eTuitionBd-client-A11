@@ -38,14 +38,14 @@ const ScrollButtons = () => {
       <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
         <button
           onClick={scrollToTop}
-          className="w-12 h-12 rounded-full bg-white shadow-lg border flex items-center justify-center hover:bg-gray-100"
+          className="w-12 h-12 rounded-full bg-base-200 text-base-content shadow-lg border border-base-content/10 flex items-center justify-center hover:bg-base-300 transition-colors"
         >
           <FaArrowUp />
         </button>
 
         <button
           onClick={scrollToBottom}
-          className="w-12 h-12 rounded-full bg-white shadow-lg border flex items-center justify-center hover:bg-gray-100"
+          className="w-12 h-12 rounded-full bg-base-200 text-base-content shadow-lg border border-base-content/10 flex items-center justify-center hover:bg-base-300 transition-colors"
         >
           <FaArrowDown />
         </button>
