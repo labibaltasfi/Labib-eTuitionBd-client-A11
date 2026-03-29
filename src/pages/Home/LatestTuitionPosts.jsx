@@ -23,7 +23,7 @@ const LatestTuitionPosts = ({ limit = 6 }) => {
       Swal.fire({
         icon: 'info',
         title: 'Login Required',
-        text: 'Please login as an approved tutor or admin to view all tuitions.',
+        text: 'Please login as an approved tutor  to view all tuitions.',
       });
       return;
     }
