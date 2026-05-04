@@ -72,7 +72,7 @@ const LatestTutors = ({ limit = 6 }) => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <div>
-            <h2 className="text-5xl font-bold mb-4 bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8">
               Latest Tutors
             </h2>
             <p className="text-lg opacity-70 max-w-2xl mx-auto">
@@ -145,7 +145,7 @@ const LatestTutors = ({ limit = 6 }) => {
                 </div>
 
                 <div className="mt-5">
-                  <button className="btn btn-secondary btn-sm w-full gap-2 group-hover:gap-3 transition-all">
+                  <button className="btn btn-primary btn-sm gap-2 group-hover:gap-3 transition-all">
                     View Profile
                     <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -158,7 +158,7 @@ const LatestTutors = ({ limit = 6 }) => {
         <div className="text-center mt-12">
           <button 
             onClick={() => navigate('/register')}
-            className="btn btn-outline btn-secondary btn-lg gap-2"
+            className="btn btn-outline btn-primary btn-lg gap-2"
           >
             Become a Tutor
             <FaArrowRight />

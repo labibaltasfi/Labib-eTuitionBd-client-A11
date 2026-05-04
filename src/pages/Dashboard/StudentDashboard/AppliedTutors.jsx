@@ -9,13 +9,21 @@ const AppliedTutors = () => {
     const { user } = useAuth();
 
 
-    const { data: tuitions = [], isLoading, isError, refetch } = useQuery({
+    const { data: tuitionsData = [], isLoading, isError, refetch } = useQuery({
         queryKey: ["tuitions-with-applications"],
         queryFn: async () => {
             const res = await axiosSecure.get("/tuitions-with-applications");
             return res.data;
         },
     });
+
+    const tuitions = Array.isArray(tuitionsData)
+        ? tuitionsData
+        : Array.isArray(tuitionsData?.tuitions)
+            ? tuitionsData.tuitions
+            : Array.isArray(tuitionsData?.data)
+                ? tuitionsData.data
+                : [];
 
 
     

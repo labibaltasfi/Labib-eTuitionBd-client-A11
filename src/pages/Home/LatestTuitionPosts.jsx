@@ -102,7 +102,7 @@ const LatestTuitionPosts = ({ limit = 6 }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-6 sm:mb-8">
               Latest Tuition Posts
             </h2>
             <p className="text-lg opacity-70 max-w-2xl mx-auto">
