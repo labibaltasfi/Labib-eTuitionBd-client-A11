@@ -131,7 +131,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'tuitionlist',
-        element: <AdminTutorRoute><TuitionList></TuitionList></AdminTutorRoute>
+        element: <StudentRoute><TuitionList></TuitionList></StudentRoute>
       },
       {
         path: 'tutor-ongoing-tuitions',

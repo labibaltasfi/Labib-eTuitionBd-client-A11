@@ -47,7 +47,7 @@ const DashboardLayout = () => {
     return (
         <div className="drawer lg:drawer-open max-w-7xl mx-auto min-h-screen">
             <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content bg-base-100 transition-colors duration-300">
+            <div className="drawer-content bg-base-100 transition-colors duration-300   checked readOnly">
 
                 <nav className="mx-3 mt-3 rounded-2xl border border-base-content/10 bg-base-200 px-4 py-3 transition-colors duration-300">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
