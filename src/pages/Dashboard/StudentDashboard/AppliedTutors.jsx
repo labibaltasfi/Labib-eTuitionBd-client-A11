@@ -83,7 +83,6 @@ const AppliedTutors = () => {
             tuitionId: app.tuitionId,
             tutorEmail: app.tutorEmail,
             tutorName: app.tutorName,
-            trackingId: app.trackingId
         }
         const res = await axiosSecure.post('/payment-checkout-session', paymentInfo);
 

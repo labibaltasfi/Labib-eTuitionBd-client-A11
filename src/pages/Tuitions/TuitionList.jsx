@@ -218,7 +218,7 @@ if (isError) {
 
                     <div>
                       <Link
-                        to={`/tuition-details/${item._id}`}
+                        to={`/tuitionlist/${item._id}`}
                         className="btn btn-primary"
                       >
                         Details

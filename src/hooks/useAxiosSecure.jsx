@@ -5,7 +5,7 @@ import useAuth from './useAuth';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'npm ',
+  baseURL: 'https://labib-e-tuition-bd-server-a11.vercel.app',
 });
 
 const useAxiosSecure = () => {

@@ -31,6 +31,7 @@ import DemoUser from "../pages/Home/DemoUser";
 import About from "../pages/Home/About";
 import Contact from "../pages/Home/Contact";
 import Profile from "../pages/Profile/Profile";
+import AppliedTuition from "../pages/Dashboard/StudentDashboard/AppliedTuition";
 
 
 
@@ -63,7 +64,7 @@ export const router = createBrowserRouter([
         ),
       },
        {
-        path: "tuition-details/:id",
+        path: "tuitionlist/:id",
         element: <PrivateRoute><TuitionDetails></TuitionDetails></PrivateRoute>
       },
        {
@@ -130,8 +131,8 @@ export const router = createBrowserRouter([
         loader: () => fetch('/location.json').then(res => res.json())
       },
       {
-        path: 'tuitionlist',
-        element: <StudentRoute><TuitionList></TuitionList></StudentRoute>
+        path: 'AppliedTuition',
+        element: <StudentRoute><AppliedTuition></AppliedTuition></StudentRoute>
       },
       {
         path: 'tutor-ongoing-tuitions',

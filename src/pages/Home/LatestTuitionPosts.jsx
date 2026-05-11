@@ -123,7 +123,7 @@ const LatestTuitionPosts = ({ limit = 6 }) => {
               variants={cardVariants}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="card bg-base-100 shadow-2xl cursor-pointer hover:shadow-primary/20 border border-base-300 overflow-hidden group"
-              onClick={() => navigate(`/tuition-details/${tuition._id}`)}
+              onClick={() => navigate(`/tuitionlist/${tuition._id}`)}
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
               

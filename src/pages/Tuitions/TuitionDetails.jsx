@@ -22,7 +22,7 @@ const TuitionDetails = () => {
 
 
   const { data: tuition = {}, isLoading } = useQuery({
-    queryKey: ["tuition-details", id],
+    queryKey: ["tuitionlist", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/tuitionlist/${id}`);
       console.log(res.data[0])

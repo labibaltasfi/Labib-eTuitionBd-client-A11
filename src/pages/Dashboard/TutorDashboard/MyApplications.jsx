@@ -85,7 +85,6 @@ const MyApplications = () => {
                     <tbody>
                         {
                             applications.map((app) => <tr key={app._id}>
-
                                 <td>{app.StudentName}
                                 </td>
                                 <td>{app.NameOfclass}
@@ -133,11 +132,11 @@ const MyApplications = () => {
                     <form onSubmit={onUpdateSubmit} className="space-y-4 mt-4">
                         <div className="form-control">
                             <label className="label"><span className="label-text">Expected Salary (BDT)</span></label>
-                            <input name="salary" type="number" defaultValue={selectedApp?.expectedSalary} className="input input-bordered" required />
+                            <input name="salary" type="number" Value={selectedApp?.expectedSalary} className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label"><span className="label-text">Experience (Years)</span></label>
-                            <input name="experience" type="text" defaultValue={selectedApp?.experience} className="input input-bordered" required />
+                            <input name="experience" type="text" Value={selectedApp?.experience} className="input input-bordered" required />
                         </div>
                         <div className="modal-action">
                             <button type="submit" className="btn btn-primary">Save Changes</button>

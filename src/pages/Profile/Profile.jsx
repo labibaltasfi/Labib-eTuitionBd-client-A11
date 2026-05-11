@@ -131,7 +131,7 @@ const Profile = () => {
                   {dbUser?.displayName || authUser?.displayName || 'User'}
                 </h2>
                 <div className="inline-block">
-                  <span className={`${roleColor[dbUser?.role]} text-white px-6 py-2 rounded-full font-semibold text-lg capitalize shadow-md`}>
+                  <span className={`${roleColor[dbUser?.role]} text-black px-6 py-2 rounded-full font-semibold text-lg capitalize shadow-md`}>
                     {dbUser?.role || 'User'}
                   </span>
                 </div>

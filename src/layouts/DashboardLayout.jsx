@@ -173,9 +173,9 @@ const DashboardLayout = () => {
                             role === 'student' && <>
 
                                 <li>
-                                    <NavLink className={navItemClass} data-tip="My Tuitions" to="/dashboard/tuitionlist">
+                                    <NavLink className={navItemClass} data-tip="Applied Tuitions" to="/dashboard/AppliedTuition">
                                         <span className={iconClass}><FaBookOpenReader /></span>
-                                        <span className="is-drawer-close:hidden">My Tuitions</span>
+                                        <span className="is-drawer-close:hidden">Applied Tuitions</span>
                                     </NavLink>
                                 </li>
                                 <li>
