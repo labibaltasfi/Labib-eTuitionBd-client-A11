@@ -17,6 +17,7 @@ const Navbar = () => {
   const [loading, setLoading] = useState(false);
   const { user, logOut } = use(AuthContext);
   const { role, roleLoading } = useRole();
+  const brokenAvatarUrl = "i.ibb.co/DPdnvvyk/nurul.webp";
 
   const handleLogOut = () => {
 
@@ -133,7 +134,7 @@ const Navbar = () => {
               !user && (
                 <div className="dropdown dropdown-end">
                   <div tabIndex={0} role="button" className="cursor-pointer">
-                    <img className=" rounded-full object-cover border-2 border-white" src="https://i.ibb.co.com/hR0p6qhz/user.png" alt="" />
+                    <img className=" rounded-full object-cover border-2 border-white" src="https://i.ibb.co/hR0p6qhz/user.png" alt="" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = logo; }} />
                   </div>
                   <div
                     tabIndex="-1"
@@ -155,9 +156,12 @@ const Navbar = () => {
                     <img
                       className="w-15 h-15 md:h-15 xl:h-14 2xl:h-16  rounded-full object-cover border-2  sm:mr-0"
                       src={
-                        user?.photoURL ? user.photoURL : "https://i.ibb.co.com/hR0p6qhz/user.png"
+                        (user?.photoURL || "").includes(brokenAvatarUrl)
+                          ? "https://i.ibb.co/hR0p6qhz/user.png"
+                          : (user?.photoURL || "https://i.ibb.co/hR0p6qhz/user.png")
                       }
                       alt="User"
+                      onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = logo; }}
                     />
                   </div>
                   <div

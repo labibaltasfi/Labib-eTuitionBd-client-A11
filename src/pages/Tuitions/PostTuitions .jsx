@@ -28,7 +28,6 @@ const PostTuitions = () => {
     const regionsDuplicate = tuitionArea.map(c => c.region);
 
     const regions = [...new Set(regionsDuplicate)];
-    console.log(regions)
 
 
     const tuitionRegion = useWatch({ control, name: 'tuitionRegion' })
@@ -84,16 +83,7 @@ const PostTuitions = () => {
     return (
         <div className="min-h-screen px-4 py-10 bg-base-100 text-base-content transition-colors duration-300">
             {/* Navigation Section */}
-            <div className="max-w-4xl mx-auto mb-8 flex justify-between items-center">
-                <h1 className="text-3xl font-bold">Post New Tuition</h1>
-                <Link 
-                    to="/dashboard/applied-tuition"
-                    className="px-6 py-3 bg-blue-500 text-white rounded-xl font-bold hover:bg-blue-600"
-                >
-                    📋 My Posted Tuitions
-                </Link>
-            </div>
-
+        
             {/* Form Section */}
             <div className="flex justify-center">
             <div className="card bg-base-200 text-base-content py-8 px-6 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-3xl shadow-2xl transition-colors duration-300">

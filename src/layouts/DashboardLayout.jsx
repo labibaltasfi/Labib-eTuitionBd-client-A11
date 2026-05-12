@@ -21,6 +21,7 @@ const DashboardLayout = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const { role } = useRole();
+    const brokenAvatarUrl = 'i.ibb.co/DPdnvvyk/nurul.webp';
 
     const { data: userData, isLoading: userLoading } = useQuery({
         queryKey: ['dashboard-user', user?.email],
@@ -76,11 +77,14 @@ const DashboardLayout = () => {
                             </button> */}
 
                             <div className="flex items-center gap-3 rounded-xl border border-base-content/10 bg-base-100 px-2 py-1 shadow-sm transition-colors duration-300">
-                                <img
-                                    src={userData?.photoURL || user?.photoURL || 'https://i.ibb.co.com/hR0p6qhz/user.png'}
-                                    alt="User"
-                                    className="h-10 w-10 rounded-full object-cover"
-                                />
+                                    <img
+                                        src={(userData?.photoURL || user?.photoURL || '').includes(brokenAvatarUrl)
+                                            ? 'https://i.ibb.co/hR0p6qhz/user.png'
+                                            : (userData?.photoURL || user?.photoURL || 'https://i.ibb.co/hR0p6qhz/user.png')}
+                                        alt="User"
+                                        className="h-10 w-10 rounded-full object-cover"
+                                        onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = logoImg; }}
+                                    />
                                 <div className="hidden sm:block">
                                     <p className="text-sm font-semibold text-base-content">
                                         {userLoading ? 'Loading...' : (userData?.displayName || user?.displayName || 'eTutionbd User')}

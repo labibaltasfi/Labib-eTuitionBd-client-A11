@@ -15,7 +15,7 @@ const SocialLogin = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
 
                 
                 const userInfo = {
@@ -27,14 +27,14 @@ const SocialLogin = () => {
 
                 axiosSecure.post('/users', userInfo)
                     .then(res => {
-                        console.log('user data has been stored', res.data)
+                        // console.log('user data has been stored', res.data)
                         navigate(location.state || '/');
                     })
 
             })
-            .catch(error => {
-                console.log(error)
-            })
+            // .catch(error => {
+            //     console.log(error)
+            // })
     }
 
     return (

@@ -4,6 +4,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import { FaTrashCan } from "react-icons/fa6";
+import { FaEdit, FaEye } from "react-icons/fa";
 
 const AppliedTuition = () => {
     const axiosSecure = useAxiosSecure();
@@ -72,78 +74,122 @@ const AppliedTuition = () => {
 
     return (
         <div className="p-6 max-w-6xl mx-auto">
-            <h1 className="text-center font-bold text-4xl py-10">My Posted Tuitions</h1>
+            <h1 className="text-center font-bold text-4xl py-10">My Applied Tuitions</h1>
 
             <div className="mb-6">
-                <Link to="/dashboard/PostTuitions" className="btn btn-primary gap-2 group-hover:gap-3 transition-all">
-                    + Post New Tuition
+                <Link to="/dashboard/PostTuitions" className="btn btn-primary gap-2">
+                    + Apply New Tuition
                 </Link>
             </div>
 
-            <div className="grid gap-6">
-                {tuitions.map((tuition) => (
-                    <div
-                        key={tuition._id}
-                        className="border rounded-xl shadow p-6 hover:shadow-lg transition bg-base-100 text-base-content"
-                    >
-                        <div className="grid md:grid-cols-3 gap-4 mb-4">
-                            {/* Left: Basic Info */}
-                            <div className="md:col-span-2">
-                                <h2 className="text-2xl font-semibold mb-2">
-                                    Class {tuition.NameOfclass} - {tuition.subjectName}
-                                </h2>
-                                <div className="grid grid-cols-2 gap-3 text-sm md:text-base">
-                                    <p><strong>Budget:</strong> ৳{tuition.budget}/month</p>
-                                    <p><strong>Region:</strong> {tuition.tuitionRegion}</p>
-                                    <p><strong>District:</strong> {tuition.district}</p>
-                                    <p><strong>Medium:</strong> {tuition.medium}</p>
-                                    <p><strong>Days:</strong> {tuition.selectedDays}</p>
-                                    <p><strong>Time:</strong> {tuition.tuitionTime}</p>
-                                </div>
-                            </div>
+            {/* Desktop Table */}
+            <div className="overflow-x-auto hidden sm:block">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Class & Subject</th>
+                            <th>Budget</th>
+                            <th>District</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tuitions.map((tuition, index) => (
+                            <tr key={tuition._id}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    <div>
+                                        <div className="font-bold">Class {tuition.NameOfclass}</div>
+                                        <div className="text-sm opacity-50">{tuition.subjectName}</div>
+                                    </div>
+                                </td>
+                                <td>৳{tuition.budget}/month</td>
+                                <td>{tuition.tuitionDistrict || tuition.district || 'N/A'}</td>
+                                <td>
+                                    {tuition.status ? (
+                                        <span className={`badge gap-2 ${tuition.status === 'approved' ? 'badge-success' : tuition.status === 'pending' ? 'badge-warning' : 'badge-error'}`}>
+                                            {tuition.status}
+                                        </span>
+                                    ) : (
+                                        <span className="badge badge-neutral">unknown</span>
+                                    )}
+                                </td>
+                                <td>
+                                    <div className="flex items-center gap-2">
+                                        <Link
+                                            to={`/tuitionlist/${tuition._id}`}
+                                            className="btn btn-sm btn-ghost"
+                                            title="View Details"
+                                        >
+                                            <FaEye />
+                                        </Link>
+                                        <button
+                                            className="btn btn-sm btn-ghost"
+                                            title="Edit"
+                                        >
+                                            <FaEdit />
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(tuition._id)}
+                                            className="btn btn-sm btn-ghost hover:bg-red-500"
+                                            title="Delete"
+                                        >
+                                            <FaTrashCan />
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
-                            {/* Right: Status & Actions */}
-                            <div className="flex flex-col justify-between">
-                                <div>
-                                    <p className="text-sm text-gray-500 mb-2">Status</p>
-                                    <span className="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                                        Active
-                                    </span>
-                                </div>
-                                <p className="text-xs text-gray-400 mt-4">
-                                    Posted: {new Date(tuition.createdAt || Date.now()).toLocaleDateString()}
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Additional Details */}
-                        <div className="border-t pt-4">
-                            <p className="mb-3"><strong>Tuition Type:</strong> {tuition.tuitionType}</p>
-                            {tuition.address && <p className="mb-3"><strong>Address:</strong> {tuition.address}</p>}
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex gap-3 mt-6">
-                            <Link
-                                to={`/tuition-details/${tuition._id}`}
-                                className="px-4 py-4 btn btn-primary gap-2 group-hover:gap-3 transition-all"
-                            >
-                                View Details
-                            </Link>
-                            <button
-                                className="px-4 py-4 btn btn-warning gap-2 group-hover:gap-3 transition-all"
-                            >
-                                Edit
-                            </button>
-                            <button
-                                onClick={() => handleDelete(tuition._id)}
-                                className="btn  transition-all bg-red-500 text-white font-bold hover:bg-red-600"
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-                ))}
+            {/* Mobile Table */}
+            <div className="overflow-x-auto sm:hidden">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tuition</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tuitions.map((tuition, index) => (
+                            <tr key={tuition._id}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    <div>
+                                        <div className="font-bold">Class {tuition.NameOfclass}</div>
+                                        <div className="text-sm opacity-50">{tuition.subjectName}</div>
+                                        <div className="text-sm">৳{tuition.budget}/month</div>
+                                        <div className="text-xs opacity-50">{tuition.tuitionDistrict || tuition.district}</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="flex flex-col gap-2">
+                                        <Link
+                                            to={`/tuitionlist/${tuition._id}`}
+                                            className="btn btn-xs btn-primary"
+                                        >
+                                            View
+                                        </Link>
+                                        <button
+                                            onClick={() => handleDelete(tuition._id)}
+                                            className="btn btn-xs btn-error"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );
