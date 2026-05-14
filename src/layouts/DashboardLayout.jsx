@@ -230,6 +230,12 @@ const DashboardLayout = () => {
                                         <span className="is-drawer-close:hidden">Revenue History</span>
                                     </NavLink>
                                 </li>
+                                 <li>
+                                    <NavLink className={navItemClass} data-tip="Profile Settings" to="/dashboard/profile-setting">
+                                        <span className={iconClass}><FaUserCog /></span>
+                                        <span className="is-drawer-close:hidden">Profile Settings</span>
+                                    </NavLink>
+                                </li>
                             </>
                         }
 

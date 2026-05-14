@@ -156,7 +156,7 @@ export const router = createBrowserRouter([
       },
        {
         path: 'profile-setting',
-        element: <StudentRoute><UpdateUser></UpdateUser></StudentRoute>
+        element: <PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>
       },
        {
         path: 'my-applications',
