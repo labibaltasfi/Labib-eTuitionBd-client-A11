@@ -3,7 +3,6 @@ import RootLayout from "../layouts/RootLayout";
 import Register from "../pages/Auth/Register/Register";
 import Login from "../pages/Auth/Login/Login";
 import PostTuitions from "../pages/Tuitions/PostTuitions ";
-import DashboardLayout from "../layouts/DashboardLayout";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import UsersManagement from "../pages/Dashboard/UsersManagement/UsersManagement";
 import UserDetails from "../pages/Dashboard/UsersManagement/UserDetails";
@@ -32,6 +31,7 @@ import About from "../pages/Home/About";
 import Contact from "../pages/Home/Contact";
 import Profile from "../pages/Profile/Profile";
 import AppliedTuition from "../pages/Dashboard/StudentDashboard/AppliedTuition";
+import AppLayout from "../layouts/AppLayout";
 
 
 
@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+    element: <PrivateRoute><AppLayout></AppLayout></PrivateRoute>,
     children: [
       {
         index: true,
@@ -130,10 +130,10 @@ export const router = createBrowserRouter([
         element: <PostTuitions></PostTuitions>,
         loader: () => fetch('/location.json').then(res => res.json())
       },
-      {
-        path: 'AppliedTuition',
-        element: <StudentRoute><AppliedTuition></AppliedTuition></StudentRoute>
-      },
+      // {
+      //   path: 'AppliedTuition',
+      //   element: <StudentRoute><AppliedTuition></AppliedTuition></StudentRoute>
+      // },
       {
         path: 'tutor-ongoing-tuitions',
         element: <TutorRoute><TutorOngoingTuitions></TutorOngoingTuitions></TutorRoute>
@@ -158,10 +158,10 @@ export const router = createBrowserRouter([
         path: 'profile-setting',
         element: <PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>
       },
-       {
-        path: 'my-applications',
-        element: <TutorRoute><MyApplications></MyApplications></TutorRoute>
-      },
+      //  {
+      //   path: 'my-applications',
+      //   element: <TutorRoute><MyApplications></MyApplications></TutorRoute>
+      // },
        {
         path: 'revenue-history',
         element: <TutorRoute><RevenueHistory></RevenueHistory></TutorRoute>

@@ -73,7 +73,7 @@ const AppliedTuition = () => {
         );
 
     return (
-        <div className="p-6 max-w-6xl mx-auto">
+        <div className="p-6 max-w-6xl ">
             <h1 className="text-center font-bold text-4xl py-10">My Applied Tuitions</h1>
 
             <div className="mb-6">

@@ -70,7 +70,7 @@ const MyApplications = () => {
 
     return (
         <div>
-            <h2 className="text-5xl">My Application</h2>
+            <h2 className="text-center font-bold text-4xl py-10">My Application</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     <thead>
@@ -132,11 +132,11 @@ const MyApplications = () => {
                     <form onSubmit={onUpdateSubmit} className="space-y-4 mt-4">
                         <div className="form-control">
                             <label className="label"><span className="label-text">Expected Salary (BDT)</span></label>
-                            <input name="salary" type="number" Value={selectedApp?.expectedSalary} className="input input-bordered" required />
+                            <input name="salary" type="number" defaultValue={selectedApp?.expectedSalary} className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label"><span className="label-text">Experience (Years)</span></label>
-                            <input name="experience" type="text" Value={selectedApp?.experience} className="input input-bordered" required />
+                            <input name="experience" type="text" defaultValue={selectedApp?.experience} className="input input-bordered" required />
                         </div>
                         <div className="modal-action">
                             <button type="submit" className="btn btn-primary">Save Changes</button>

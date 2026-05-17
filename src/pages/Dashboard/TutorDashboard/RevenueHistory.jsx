@@ -17,7 +17,7 @@ const RevenueHistory = () => {
 
     return (
         <div className="p-6">
-           
+           <h1 className="text-center font-bold text-4xl py-10">Revenue History</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <Card title="Gross Amount Paid" amount={data.totals.totalGross} bg="bg-[#192489]" />
                 <Card title="Your Net Earnings (80%)" amount={data.totals.totalNet} bg="bg-emerald-600" />

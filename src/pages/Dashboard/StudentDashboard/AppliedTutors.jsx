@@ -91,7 +91,7 @@ const AppliedTutors = () => {
     }
 
     return (
-        <div className="p-6 max-w-6xl mx-auto">
+        <div className="p-6">
             <h1 className="text-center font-bold text-4xl py-10">Applied Tutors</h1>
 
             {tuitions.map(({ tuition, applications }) => (

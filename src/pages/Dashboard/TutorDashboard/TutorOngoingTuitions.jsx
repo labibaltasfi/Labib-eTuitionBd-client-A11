@@ -22,9 +22,6 @@ const { data: tuition = [] } = useQuery({
 });
 
 
-
-console.log(tuition)
-
     return (
         <div className="min-h-screen bg-base-100 p-4 text-base-content transition-colors duration-300">
             <div className='lg:w-9/12 mx-auto'>

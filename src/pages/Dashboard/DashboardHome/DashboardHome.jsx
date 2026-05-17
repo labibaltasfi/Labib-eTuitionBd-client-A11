@@ -2,6 +2,9 @@ import React from 'react';
 import useRole from '../../../hooks/useRole';
 import AdminDashboardHome from './AdminDashboardHome';
 import StudentDashboardHome from './studentDashboardHome';
+import RevenueHistory from '../TutorDashboard/RevenueHistory';
+import MyApplications from '../TutorDashboard/MyApplications';
+import AppliedTuition from '../StudentDashboard/AppliedTuition';
 
 
 const DashboardHome = () => {
@@ -10,7 +13,10 @@ const DashboardHome = () => {
         return <AdminDashboardHome></AdminDashboardHome>
     }
     if (role === 'student') {
-        return <StudentDashboardHome></StudentDashboardHome>
+        return <AppliedTuition></AppliedTuition>
+    }
+      if (role === 'tutor') {
+        return <MyApplications></MyApplications>
     }
    
 };
